@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1607174759 source:c:\users\a8275\desktop\git²Ö¿â\sj-structure-origin-code-\link_list\testlinklist.cpp
+	"LinkList.h"
+
+1607174792 c:\users\a8275\desktop\git²Ö¿â\sj-structure-origin-code-\link_list\linklist.h
+	"Assistance.h"
+	"Node.h"
+
+1386423798 c:\users\a8275\desktop\git²Ö¿â\sj-structure-origin-code-\link_list\assistance.h
+	<cstring>
+	<iostream>
+	<limits>
+	<cmath>
+	<fstream>
+	<cctype>
+	<ctime>
+	<cstdlib>
+	<cstdio>
+	<iomanip>
+	<cstdarg>
+	<cassert>
+
+1357169112 c:\users\a8275\desktop\git²Ö¿â\sj-structure-origin-code-\link_list\node.h
+

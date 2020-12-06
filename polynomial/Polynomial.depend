@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1607176321 source:c:\users\a8275\desktop\git²Ö¿â\sj-structure-origin-code-\polynomial\testpolynomial.cpp
+	"Polynomial.h"
+
+1607176464 c:\users\a8275\desktop\git²Ö¿â\sj-structure-origin-code-\polynomial\polynomial.h
+	"Assistance.h"
+	"LinkList.h"
+	"PolyItem.h"
+
+1386423798 c:\users\a8275\desktop\git²Ö¿â\sj-structure-origin-code-\polynomial\assistance.h
+	<cstring>
+	<iostream>
+	<limits>
+	<cmath>
+	<fstream>
+	<cctype>
+	<ctime>
+	<cstdlib>
+	<cstdio>
+	<iomanip>
+	<cstdarg>
+	<cassert>
+
+1376982156 c:\users\a8275\desktop\git²Ö¿â\sj-structure-origin-code-\polynomial\linklist.h
+	"Node.h"
+
+1357169112 c:\users\a8275\desktop\git²Ö¿â\sj-structure-origin-code-\polynomial\node.h
+
+1202480334 c:\users\a8275\desktop\git²Ö¿â\sj-structure-origin-code-\polynomial\polyitem.h
+

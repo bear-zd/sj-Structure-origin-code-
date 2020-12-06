@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1607173015 source:c:\users\a8275\desktop\git²Ö¿â\sj-structure-origin-code-\seq_list\testseqlist.cpp
+	"SeqList.h"
+
+1607173095 c:\users\a8275\desktop\git²Ö¿â\sj-structure-origin-code-\seq_list\seqlist.h
+	"Assistance.h"
+
+1386423798 c:\users\a8275\desktop\git²Ö¿â\sj-structure-origin-code-\seq_list\assistance.h
+	<cstring>
+	<iostream>
+	<limits>
+	<cmath>
+	<fstream>
+	<cctype>
+	<ctime>
+	<cstdlib>
+	<cstdio>
+	<iomanip>
+	<cstdarg>
+	<cassert>
+

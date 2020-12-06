@@ -20,7 +20,7 @@ int main(void)
   		cout << endl << "0. 退出";
 		cout << endl << "选择功能(0~8):";
 		cin >> c;
-		switch (c) 
+		switch (c)
 		{
 			case '1':
 			    la.Clear();
@@ -37,7 +37,7 @@ int main(void)
 			case '3':
 			    cout << endl << "输入元素位置:";
 			    cin >> i;
-			    if (la.GetElem(i, e) == RANGE_ERROR) 
+			    if (la.GetElem(i, e) == RANGE_ERROR)
 					cout << "元素不存在." << endl;
 				else
 					cout << "元素:" << e << endl;
@@ -55,7 +55,7 @@ int main(void)
 			case '5':
 			    cout << endl << "输入位置:";
 			    cin >> i;
-			    if (la.DeleteElem(i, e) == RANGE_ERROR) 
+			    if (la.DeleteElem(i, e) == RANGE_ERROR)
 					cout << "位置范围错." << endl;
 				else
 					cout << "被删除元素值:" << e << endl;
@@ -65,7 +65,7 @@ int main(void)
 			    cin >> i;
 			    cout << endl << "输入元素值:";
 			    cin >> e;
-			    if (la.InsertElem(i, e) == RANGE_ERROR) 
+			    if (la.InsertElem(i, e) == RANGE_ERROR)
 					cout << "位置范围错." << endl;
 				else
 					cout << "成功:" << e << endl;
@@ -74,13 +74,16 @@ int main(void)
 			    cout << endl << "输入元素的值:";
 			    cin >> e;
 			    i = la.LocateElem(e);
-			    if (i == 0) 
+			    if (i == 0)
 					cout << "元素不存在." << endl;
 				else
 					cout << "元素" << e << "的序号为：" << i << endl;
 			    break;
 			case '8':
 			    cout << endl << "单链表的长度为:" << la.GetLength()  << endl;
+			    break;
+            case '9':
+			   la.Reverse();8
 			    break;
        		}
 	}

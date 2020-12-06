@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1607186432 source:c:\users\a8275\desktop\git仓库\sj-structure-origin-code-\作业\第三章四-2-(4)\testsortedseqlist.cpp
+	"SortedSeqList.h"
+
+1607186517 c:\users\a8275\desktop\git仓库\sj-structure-origin-code-\作业\第三章四-2-(4)\sortedseqlist.h
+	"Assistance.h"
+
+1607181058 c:\users\a8275\desktop\git仓库\sj-structure-origin-code-\作业\第三章四-2-(4)\assistance.h
+	<cstring>
+	<iostream>
+	<limits>
+	<cmath>
+	<fstream>
+	<cctype>
+	<ctime>
+	<cstdlib>
+	<cstdio>
+	<iomanip>
+	<cstdarg>
+	<cassert>
+

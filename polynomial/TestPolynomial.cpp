@@ -35,7 +35,7 @@ int main(void)
 					fa.InsItem(it);
 					cin >> it.coef >> it.expn;
 				}
-			    
+
 				// 输入fb
 				fb.SetZero();		// 将fb设置为0
 				cout << endl << "输入第二个多项式每项的系数和指数(coef, expn)(e = -1时退出):" << endl;
@@ -44,19 +44,24 @@ int main(void)
 					fb.InsItem(it);
 					cin >> it.coef >> it.expn;
 				}
-			    
+
 				fc = fa + fb;
 			    cout << "fa:" << endl;			// 显示fa
 				fa.Display();
-			    cout << endl;			
+			    cout << endl;
 
 			    cout << "fb:" << endl;			// 显示fa
 				fb.Display();
-			    cout << endl;			
+			    cout << endl;
 
 			    cout << "fa + fb:" << endl;		// 显示fc = fa + fb
 				fc.Display();
-			    cout << endl;			
+			    cout << endl;
+				break;
+            case '4':
+				cout << endl;
+			    fa.calc(2);
+			    cout << endl;
 				break;
 		}
 	}

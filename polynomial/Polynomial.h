@@ -17,22 +17,40 @@ public:
 	//  抽象数据类型方法声明及重载编译系统默认方法声明:
 	Polynomial(){};				// 无参构造函数
 	~Polynomial(){};			// 析构函数
-	int Length() const;			// 求多项式的项数			 
+	int Length() const;			// 求多项式的项数
 	bool IsZero() const;		// 判断多项式是否为0
 	void SetZero();				// 将多项式置为0
 	void Display();				// 显示多项式
 	void InsItem( const PolyItem &item);		// 插入一项
 	Polynomial operator +(const Polynomial &p) const; // 加法运算符重载
 	Polynomial(const Polynomial &copy);			// 复制构造函数
-	Polynomial(const LinkList<PolyItem> &copyLinkList);				
+	Polynomial(const LinkList<PolyItem> &copyLinkList);
 		// 由多项式组成的线性表构造多项式
 	Polynomial &operator =(const Polynomial &copy);	// 赋值语句重载
 	Polynomial &operator =(const LinkList<PolyItem> &copyLinkList);	// 赋值语句重载
+	long double calc(const double x);//计算
+
 };
 
 
 // 多项式类的实现部分
 
+long double Polynomial::calc(const double x)
+{
+    long double result=0,cal;
+    PolyItem item;
+    int length=Length();
+    for(int i=1;i<=length;i++)
+        {
+        polyList.GetElem(i,item);
+        cal=item.coef*pow(x,item.expn);
+        if(LONG_MAX-result>=cal)
+            result+=cal;
+        else
+            {cout<<"out of range!!!"<<endl;break;}
+        }
+        return result;
+}
 int Polynomial::Length() const
 // 操作结果：返回多项式的项数
 {
@@ -48,7 +66,7 @@ bool Polynomial::IsZero() const
 void Polynomial::SetZero()
 // 操作结果：将多项式置为0
 {
-	polyList.Clear(); 
+	polyList.Clear();
 }
 
 void Polynomial::Display()
@@ -63,10 +81,10 @@ void Polynomial::Display()
         if ( it.coef != 1)
             if (it.coef !=-1)
                cout << it.coef;
-            else 
+            else
                cout << "-";
         if (it.expn > 1)
-           cout << "x^" << it.expn ; 
+           cout << "x^" << it.expn ;
         else
            if (it.expn == 1)
                cout << "x"  ;
@@ -94,13 +112,13 @@ Polynomial Polynomial::operator +(const Polynomial &p) const
 	int aPos = 1, bPos = 1;
 	PolyItem aItem, bItem;
 	Status aStatus, bStatus;
-	
-	aStatus = la.GetElem(aPos++, aItem);			// 取出la的第1项 
+
+	aStatus = la.GetElem(aPos++, aItem);			// 取出la的第1项
 	bStatus = lb.GetElem(bPos++, bItem);			// 取出lb的第1项
 
 	while (aStatus == ENTRY_FOUND && bStatus == ENTRY_FOUND )	{
 		if (aItem.expn > bItem.expn) {		// la中的项aItem指数较小
-			lc.InsertElem(aItem);	// 将aItem追加到lc的表尾 
+			lc.InsertElem(aItem);	// 将aItem追加到lc的表尾
 			aStatus = la.GetElem(aPos++, aItem);// 取出la的第下一项
 		}
 		else if (aItem.expn < bItem.expn) {	// lb中的项bItem指数较小
@@ -138,13 +156,13 @@ Polynomial::Polynomial(const Polynomial &copy)
 	polyList = copy.polyList;
 }
 
-Polynomial::Polynomial(const LinkList<PolyItem> &copyLinkList)	
+Polynomial::Polynomial(const LinkList<PolyItem> &copyLinkList)
 // 操作结果：由多项式组成的线性表构造多项式——转换构造函数
 {
 	polyList = copyLinkList;
 }
 
-Polynomial &Polynomial::operator =(const Polynomial &copy)	
+Polynomial &Polynomial::operator =(const Polynomial &copy)
 // 操作结果：将多项式copy赋值给当前多项式——赋值语句重载
 {
 	if ( &copy != this)	{
