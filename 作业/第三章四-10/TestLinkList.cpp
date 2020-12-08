@@ -4,6 +4,8 @@ int main(void)
 {
 	char c = '*';
     LinkList<double> la;
+    LinkList<double> lb;
+
     double e;
 	int i;
 
@@ -17,6 +19,8 @@ int main(void)
         cout << endl << "6. 插入元素.";
 		cout << endl << "7. 元素定位";
 		cout << endl << "8. 取单链表长度";
+		cout << endl << "9. 连接两个链表";
+		cout << endl << "a. 对链表进行排序";
   		cout << endl << "0. 退出";
 		cout << endl << "选择功能(0~8):";
 		cin >> c;
@@ -73,17 +77,51 @@ int main(void)
 			case '7':
 			    cout << endl << "输入元素的值:";
 			    cin >> e;
-			    i = la.LocateElem(e);
-			    if (i == 0)
+			    int position;
+			    la.LocateElem(e,position);
+			    if (position == -1)
 					cout << "元素不存在." << endl;
 				else
-					cout << "元素" << e << "的序号为：" << i << endl;
+					cout << "元素" << e << "的序号为：" << position << endl;
 			    break;
 			case '8':
 			    cout << endl << "单链表的长度为:" << la.GetLength()  << endl;
 			    break;
             case '9':
-			   la.Reverse();8
+                la.Clear();lb.Clear();
+				cout << endl << "输入la的元素e(e = 0时退出):";
+				cin >> e;
+				while (e != 0)   {
+					la.InsertElem(e);
+					cin >> e;
+				}
+				cout << endl << "输入lb的元素e(e = 0时退出):";
+				cin >> e;
+				while (e != 0)   {
+					lb.InsertElem(e);
+					cin >> e;
+				}
+				la.LinkCat(lb);
+				 cout << endl << "连接后：";
+                la.Traverse(Write<double>);
+			    break;
+            case 'a':
+                la.Clear();lb.Clear();
+				cout << endl << "输入la的元素e(e = 0时退出):";
+				cin >> e;
+				while (e != 0)   {
+					la.InsertElem(e);
+					cin >> e;
+				}
+				cout << endl << "输入lb的元素e(e = 0时退出):";
+				cin >> e;
+				while (e != 0)   {
+					lb.InsertElem(e);
+					cin >> e;
+				}
+                la.LinkCatSort(lb);
+                cout << endl << "连接并排序后：";
+                 la.Traverse(Write<double>);
 			    break;
        		}
 	}

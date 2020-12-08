@@ -31,7 +31,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="GlobalAssitence.h" />
+		<Unit filename="Assistance.h" />
 		<Unit filename="LinkList.h" />
 		<Unit filename="Node.h" />
 		<Unit filename="TestLinkList.cpp" />
