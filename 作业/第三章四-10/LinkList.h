@@ -161,19 +161,8 @@ LinkList<ElemType> & LinkList<ElemType>::LinkCat(const LinkList<ElemType> & ll)
     length+=ll.length;
 return *this;
 }
-template<class ElemType>
-LinkList<ElemType> & LinkList <ElemType> :: Sort()
-{
-    ElemType t1,t2;
-     for(int i=0;i<length-1;i++)
-        for(int j =i+1;j<length;j++)
-     {
-         GetElem(i,t1);GetElem(j,t2);
-         if(t1<t2)
-            {SetElem(i,t2);SetElem(j,t1);}
-     }
-    return *this;
-}
+/*template <class ElemType>
+LinkList <ElemType> & LinkList<ElemType> :: Sort(const LinkList <ElemType>)*/
 template <class ElemType>
 void LinkList<ElemType>::Display() const
 {

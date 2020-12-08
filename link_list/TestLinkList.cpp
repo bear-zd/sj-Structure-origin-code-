@@ -83,7 +83,7 @@ int main(void)
 			    cout << endl << "单链表的长度为:" << la.GetLength()  << endl;
 			    break;
             case '9':
-			   la.Reverse();8
+			   la.Reverse();
 			    break;
        		}
 	}
