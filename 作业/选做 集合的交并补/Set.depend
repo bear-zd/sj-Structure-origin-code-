@@ -1,0 +1,41 @@
+# depslib dependency file v1.0
+1607477196 source:c:\users\aa\downloads\sj-structure-origin-code--master\sj-structure-origin-code--master\assemble\assemble.cpp
+	"SeqList.h"
+
+1607477362 c:\users\aa\downloads\sj-structure-origin-code--master\sj-structure-origin-code--master\assemble\seqlist.h
+	"Assistance.h"
+
+1607439432 c:\users\aa\downloads\sj-structure-origin-code--master\sj-structure-origin-code--master\assemble\assistance.h
+	<cstring>
+	<iostream>
+	<limits>
+	<cmath>
+	<fstream>
+	<cctype>
+	<ctime>
+	<cstdlib>
+	<cstdio>
+	<iomanip>
+	<cstdarg>
+	<cassert>
+
+1607494773 source:c:\users\a8275\desktop\git仓库\sj-structure-origin-code-\作业\选做 集合的交并补\assemble.cpp
+	"SeqList.h"
+
+1607494814 c:\users\a8275\desktop\git仓库\sj-structure-origin-code-\作业\选做 集合的交并补\seqlist.h
+	"Assistance.h"
+
+1607439432 c:\users\a8275\desktop\git仓库\sj-structure-origin-code-\作业\选做 集合的交并补\assistance.h
+	<cstring>
+	<iostream>
+	<limits>
+	<cmath>
+	<fstream>
+	<cctype>
+	<ctime>
+	<cstdlib>
+	<cstdio>
+	<iomanip>
+	<cstdarg>
+	<cassert>
+

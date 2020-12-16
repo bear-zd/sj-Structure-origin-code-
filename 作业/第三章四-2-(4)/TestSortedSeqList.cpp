@@ -17,7 +17,7 @@ int main()
         cout << endl << "6. 插入元素.";
         cout << endl << "7. 元素定位.";
         cout << endl << "8.求线性表长度.";
-        cout << endl << "9.获取范围内的元素值.";
+        cout << endl << "9.删除范围内的元素值.";
 		cout << endl << "0. 退出";
 		cout << endl << "选择功能(0~8):";
 		cin >> c;
@@ -86,17 +86,13 @@ int main()
 			    cout << endl << "线性表的长度为:" << la.GetLength() << endl;
 			    break;
             case '9':
-                /*double left,right;
+                double left,right;
 			    cout << endl << "输入左边界值:" ;
 			    cin>>left;
 			    cout << endl << "输入右边界值:";
 			    cin>>right;
-                la.VRange(left,right);
-                break;*/
-                int a;
-                cin>>a;
-                la.DeleteElems(a);
-
+                la.DRange(left,right);
+                break;
        	}
 	}
 

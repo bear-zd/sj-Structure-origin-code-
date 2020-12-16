@@ -30,7 +30,7 @@ public:
 	SeqList(const SeqList<ElemType> &sa);        // 复制构造函数
 	SeqList<ElemType> &operator =(const SeqList<ElemType> &sa); // 赋值语句重载
 	void ListSort() ;//排序函数
-	void VRange(int s, int t);
+	SeqList <ElemType> & DRange(int s, int t);
 };
 
 
@@ -49,20 +49,19 @@ void SeqList<ElemType>::ListSort()
         }
 }
 template <class ElemType>
-void SeqList<ElemType>::VRange(int s,int t)
-{int i;bool j;
-     for(i=0;i<length;i++)
-        {if(elems[i]>=s&&elems[i]<=t)
+SeqList <ElemType> & SeqList<ElemType>::DRange(int s,int t)
+{int i;bool j;ElemType e;
+     for(i=1;i<=length;i++)
+        {if(elems[i-1]>=s&&elems[i-1]<=t) //当存在元素在(s,t)内时
             {j=true;break;}
-        if(i==length)
+        if(i==GetLength()+1)
             j=false;}
         if(j==false)
             cout<<"没有合适的值！"<<endl;
         else
-            while(elems[i]<=t&&i<length)
-                {cout<<elems[i]<<" "; i++;}
-    return ;
-
+            while(elems[i-1]<=t&&i<=GetLength())
+                {DeleteElem(i,e);}
+    return *this;
 }
 template <class ElemType>
 SeqList<ElemType>::SeqList(int size)
@@ -82,7 +81,7 @@ SeqList<ElemType>::SeqList(ElemType v[], int n, int size)
 	assert(elems);                      // 申请存储空间失败，程序终止
 	maxLength = size;					// 设置顺序表的最大容量
 	length = n;							// 顺序表的当前长度为n
-	for (int i = 0; i < length; i++)	// 将数组v中的元素依次存放到elems数组中
+	for (int i = 0; i < GetLength(); i++)	// 将数组v中的元素依次存放到elems数组中
 		elems[i] = v[i];
     ListSort();
 }
@@ -119,7 +118,7 @@ template <class ElemType>
 void SeqList<ElemType>::Traverse(void (*visit)(const ElemType &)) const
 // 功能：依次对顺序表的每个元素调用函数(*visit)进行访问
 {
-	for (int i = 0; i < length; i++)
+	for (int i = 0; i < GetLength(); i++)
 		(*visit)(elems[i]);
 }
 
@@ -128,16 +127,16 @@ int SeqList<ElemType>::LocateElem(const ElemType &e) const
 // 功能：求元素e在顺序表中的序号,如果顺序表中不存在元素e则返回0
 {
 	int i = 0;
-    while (i < length && elems[i] != e)
+    while (i < GetLength() && elems[i] != e)
          i++;
-    return i < length ? i+1 : 0;
+    return i < GetLength() ? i+1 : 0;
 }
 
 template <class ElemType>
 Status SeqList<ElemType>::GetElem(int i, ElemType &e) const
 // 功能：当顺序表存在第i个元素时，用e返回其值，函数返回ENTRY_FOUND,否则函数返回NOT_PRESENT
 {
-	if(i < 1 || i > length)
+	if(i < 1 || i > GetLength())
 		return NOT_PRESENT;	// 返回元素不存在
 	else	{
 		e = elems[i - 1];
@@ -147,9 +146,9 @@ Status SeqList<ElemType>::GetElem(int i, ElemType &e) const
 
 template <class ElemType>
 Status SeqList<ElemType>::SetElem(int i, const ElemType &e)
-// 功能：将顺序表的第i个位置的元素赋值为e。i的取值范围为1≤i≤length,i合法时函数返回SUCCESS,否则函数返回RANGE_ERROR
+// 功能：将顺序表的第i个位置的元素赋值为e。i的取值范围为1≤i≤GetLength(),i合法时函数返回SUCCESS,否则函数返回RANGE_ERROR
 {
-	if (i < 1 || i > length)
+	if (i < 1 || i > GetLength())
 		return RANGE_ERROR;	// 返回位置错
 	else	{
 		elems[i - 1] = e;
@@ -160,16 +159,15 @@ Status SeqList<ElemType>::SetElem(int i, const ElemType &e)
 
 template <class ElemType>
 Status SeqList<ElemType>::DeleteElem(int i, ElemType &e)
-// 功能：删除顺序表第i个位置的元素, 并前用e返回其值。i的的取值范围为1≤i≤length,i合法时函数返回SUCCESS,否则函数返回RANGE_ERROR
+// 功能：删除顺序表第i个位置的元素, 并前用e返回其值。i的的取值范围为1≤i≤GetLength(),i合法时函数返回SUCCESS,否则函数返回RANGE_ERROR
 {
-	if (i < 1 || i > length)
+	if (i < 1 || i >GetLength())
 		return RANGE_ERROR;      // 返回位置错
 	else	{
 		e = elems[i - 1];	     // 用e返回被删除元素的值
-		for (int j = i; j < length; j++)// 被删除元素之后的元素依次左移一个位置
+		for (int j = i; j < GetLength(); j++)// 被删除元素之后的元素依次左移一个位置
 			elems[j-1] = elems[j];
 		length--;				// 删除后顺序表元素个数减1
-		 ListSort();
 		return SUCCESS;	        // 返回删除成功
 	}
 }
@@ -177,7 +175,7 @@ Status SeqList<ElemType>::DeleteElem(int i, ElemType &e)
 template <class ElemType>
 void SeqList<ElemType>::DeleteElems(ElemType &e)
 {
-        for(int i=0;i<length;i++)
+        for(int i=0;i<GetLength();i++)
             if(elems[i]==e)
                 {DeleteElem(i+1,e);i--;}
 		return ;

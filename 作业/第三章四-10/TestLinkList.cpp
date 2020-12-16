@@ -11,6 +11,8 @@ int main(void)
 
     while (c != '0')
 	{
+        cout << endl << "9. 连接两个链表";
+		cout << endl << "a. 对链表进行排序";
         cout << endl << "1. 生成单链表.";
         cout << endl << "2. 显示单链表.";
         cout << endl << "3. 取指定位置的元素.";
@@ -19,8 +21,6 @@ int main(void)
         cout << endl << "6. 插入元素.";
 		cout << endl << "7. 元素定位";
 		cout << endl << "8. 取单链表长度";
-		cout << endl << "9. 连接两个链表";
-		cout << endl << "a. 对链表进行排序";
   		cout << endl << "0. 退出";
 		cout << endl << "选择功能(0~8):";
 		cin >> c;

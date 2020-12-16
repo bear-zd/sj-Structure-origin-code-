@@ -38,15 +38,62 @@ public:
 
 // 单链表类的实现部分
 
-
+template <class ElemType>
+LinkList <ElemType> & LinkList <ElemType> :: LinkCatSort(const LinkList <ElemType> &lb)
+{
+LinkList <ElemType> lc;
+Node <ElemType> *p=head,*q=lb.head,*r=lc.head;
+int i;
+for(;p!=NULL;p=p->next)
+    {if(lc.head==NULL)
+        {lc.InsertElem(p->data);}//插入第一个元素
+    else
+    {
+        if(p->data>lc.head->data)
+                    lc.InsertElem(0,p->data); //插入到正好小于的地方
+        else
+            {for(i=1,r=lc.head;r->next!=NULL;i++)
+            {
+                if(p->data<=r->data&&p->data>=r->next->data)//插入到正好小于的地方
+                    {lc.InsertElem(i,p->data);break;}
+                else
+                    r=r->next;
+            }
+            if(r->next==NULL)
+                lc.InsertElem(p->data);
+            }
+    }
+}
+for(;q!=NULL;q=q->next)
+    {if(lc.head==NULL)
+        {lc.InsertElem(q->data);}
+    else
+    {
+        if(q->data>lc.head->data)
+                    lc.InsertElem(0,q->data);
+        else
+            {for(i=1,r=lc.head;r->next!=NULL;i++)
+            {
+                if(q->data<=r->data&&q->data>=r->next->data)
+                    {lc.InsertElem(i,q->data);break;}
+                else
+                    r=r->next;
+            }
+            if(r->next==NULL)
+                lc.InsertElem(q->data);
+            }
+    }
+}
+*this = lc;
+return *this;
+}
 
 template <class ElemType>
 LinkList<ElemType>::LinkList()
-// 操作结果：构造一个空链表
 {
-	head = new Node<ElemType>;		// 构造头结点
-	head=NULL;                  // 构造头结点失败，终止程序运行
-	length = 0;						// 初始化单链表长度为0
+	head = new Node<ElemType>;
+	head=NULL;                  //无头节点的构造
+	length = 0;
 }
 
 template <class ElemType>
@@ -64,7 +111,6 @@ LinkList<ElemType>::LinkList(ElemType v[], int n)
 
 template <class ElemType>
 LinkList<ElemType>::~LinkList()
-// 操作结果：销毁单链表
 {
 	Clear();			// 清空单链表
 	delete head;		// 释放头结点所指空间
@@ -72,21 +118,18 @@ LinkList<ElemType>::~LinkList()
 
 template <class ElemType>
 int LinkList<ElemType>::GetLength() const
-// 操作结果：返回单链表的长度
 {
 	return length;
 }
 
 template <class ElemType>
 bool LinkList<ElemType>::IsEmpty() const
-// 操作结果：如单链表为空，则返回true，否则返回false
 {
-	return head == NULL;
+	return head == NULL; //无头节点
 }
 
 template <class ElemType>
 void LinkList<ElemType>::Clear()
-// 操作结果：清空单链表,删除单链表中所有元素结点
 {
 	while (head != NULL)
 	{
@@ -101,7 +144,7 @@ template <class ElemType>
 void LinkList<ElemType>::Traverse(void (*Visit)(const ElemType &)) const
 // 操作结果：依次对单链表的每个元素调用函数(*visit)访问
 {
-    Node<ElemType> *p = head;
+    Node<ElemType> *p = head;//
 	while (p != NULL) {
 		(*Visit)(p->data);	// 对单链表中每个元素调用函数(*visit)访问
 		p = p->next;
@@ -111,7 +154,7 @@ void LinkList<ElemType>::Traverse(void (*Visit)(const ElemType &)) const
 template <class ElemType>
 Status LinkList<ElemType>::LocateElem(const ElemType &e , int & position) const
 {
-    Node<ElemType> *p = head;
+    Node<ElemType> *p = head;//
     position = 0;
 	while (p != NULL && p->data != e) {
 	    position++;
@@ -125,17 +168,15 @@ Status LinkList<ElemType>::LocateElem(const ElemType &e , int & position) const
 
 template <class ElemType>
 Status LinkList<ElemType>::GetElem(int i, ElemType &e) const
-// 操作结果：当单链表存在第i个元素时，用e返回其值，函数返回ENTRY_FOUND,
-//	否则函数返回NOT_PRESENT
 {
-	if (i < 0 || i >= length||IsEmpty())
+	if (i < 0 || i >=GetLength()||IsEmpty())
 		return RANGE_ERROR;
  	else	{
 		Node<ElemType> *p = head;
 		int count;
 		for (count = 0; count <i; count++)
             p = p->next;
-		e = p->data;				// 用e返回第i个元素的值
+		e = p->data;
 		return ENTRY_FOUND;
         }
 	}
@@ -143,29 +184,25 @@ Status LinkList<ElemType>::GetElem(int i, ElemType &e) const
 
 template <class ElemType>
 Status LinkList<ElemType>::SetElem(int i, const ElemType &e)
-// 操作结果：将单链表的第i个位置的元素赋值为e,
-//	i的取值范围为1≤i≤length,
-//	i合法时函数返回SUCCESS,否则函数返回RANGE_ERROR
+
 {
-	if (i < 0 || i >= length||IsEmpty())
+	if (i < 0 || i >= GetLength()||IsEmpty())
 		return RANGE_ERROR;
 	else	{
 		Node<ElemType> *p = head;
 		int count;
 		for (count = 0; count < i; count++)
-		  p = p->next;	           // 取出指向第i个结点的指针
-		p->data = e;			   // 修改第i个元素的值为e
+		  p = p->next;
+		p->data = e;
 		return SUCCESS;
 	}
 }
 
 template <class ElemType>
 Status LinkList<ElemType>::DeleteElem(int i, ElemType &e)
-// 操作结果：删除单链表的第i个位置的元素, 并用e返回其值,
-//	i的取值范围为1≤i≤length,
-//	i合法时函数返回SUCCESS,否则函数返回RANGE_ERROR
+
 {
-	if (i < 0 || i >= length||IsEmpty())
+	if (i < 0 || i >= GetLength()||IsEmpty())
 		return RANGE_ERROR;   // i范围错
  	else	{
 		Node<ElemType> *p = head, *q;
@@ -185,11 +222,9 @@ Status LinkList<ElemType>::DeleteElem(int i, ElemType &e)
 
 template <class ElemType>
 Status LinkList<ElemType>::InsertElem(int i, const ElemType &e)
-// 操作结果：在单链表的第i个位置前插入元素e
-//	i的取值范围为1≤i≤length+1
-//	i合法时返回SUCCESS, 否则函数返回RANGE_ERROR
+
 {
-	if (i < 0 || i >= length)
+	if (i < 0 || i >=GetLength())
 		return RANGE_ERROR;
     if(IsEmpty()&&i==0)
     {InsertElem(e);return SUCCESS;}
@@ -215,16 +250,15 @@ Status LinkList<ElemType>::InsertElem(int i, const ElemType &e)
 
 template <class ElemType>
 Status LinkList<ElemType>::InsertElem(const ElemType &e)
-// 操作结果：在单链表的表尾位置插入元素e
 {
     if (head==NULL)
         {head=new Node<ElemType>(e,NULL);length++;return SUCCESS;}
     else{
 	Node<ElemType> *p, *q;
-	q = new Node<ElemType>(e, NULL);    // 生成新结点q
-	for (p = head; p->next != NULL; p = p->next) ;	// p指向表尾结点
-    p->next = q;                        // 在单链表的表尾位置插入新结点
-	length++;							// 插入成功后，单链表长度加1
+	q = new Node<ElemType>(e, NULL);
+	for (p = head; p->next != NULL; p = p->next) ;
+    p->next = q;
+	length++;
 	return SUCCESS;
     }
 }
@@ -275,54 +309,6 @@ LinkList <ElemType> & LinkList <ElemType> :: LinkCat(const LinkList <ElemType> &
     length+=lb.length;
     return *this;
 }
-template <class ElemType>
-LinkList <ElemType> & LinkList <ElemType> :: LinkCatSort(const LinkList <ElemType> &lb)
-{
-LinkList <ElemType> lc;
-Node <ElemType> *p=head,*q=lb.head,*r=lc.head;
-int i;
-for(;p!=NULL;p=p->next)
-    {if(lc.head==NULL)
-        {lc.InsertElem(p->data);}
-    else
-    {
-        if(p->data>lc.head->data)
-                    lc.InsertElem(0,p->data);
-        else
-            {for(i=1,r=lc.head;r->next!=NULL;i++)
-            {
-                if(p->data<=r->data&&p->data>=r->next->data)
-                    {lc.InsertElem(i,p->data);break;}
-                else
-                    r=r->next;
-            }
-            if(r->next==NULL)
-                lc.InsertElem(p->data);
-            }
-    }
-}
-for(;q!=NULL;q=q->next)
-    {if(lc.head==NULL)
-        {lc.InsertElem(q->data);}
-    else
-    {
-        if(q->data>lc.head->data)
-                    lc.InsertElem(0,q->data);
-        else
-            {for(i=1,r=lc.head;r->next!=NULL;i++)
-            {
-                if(q->data<=r->data&&q->data>=r->next->data)
-                    {lc.InsertElem(i,q->data);break;}
-                else
-                    r=r->next;
-            }
-            if(r->next==NULL)
-                lc.InsertElem(q->data);
-            }
-    }
-}
-*this = lc;
-return *this;
-}
+
 #endif
 
