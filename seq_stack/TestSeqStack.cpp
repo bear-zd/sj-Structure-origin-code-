@@ -53,8 +53,8 @@ int main(void)
 		}
 	}
 
-	system("PAUSE"); 
-	return 0;    
+	system("PAUSE");
+	return 0;
 }
 
 

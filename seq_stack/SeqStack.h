@@ -5,19 +5,19 @@
 
 // 顺序栈模板类
 template<class ElemType>
-class SeqStack 
+class SeqStack
 {
 protected:
 // 顺序栈的数据成员:
-	int top;										// 栈顶指针 
-	int maxSize;									// 栈的最大容量 
+	int top;										// 栈顶指针
+	int maxSize;									// 栈的最大容量
 	ElemType *elems;								// 元素存储空间
 
 public:
 //  顺序栈的方法声明及重载编译系统默认方法声明:
 	SeqStack(int size = DEFAULT_SIZE);				// 构造函数
 	virtual ~SeqStack();							// 析构函数
-	int GetLength() const;							// 求栈的长度			 
+	int GetLength() const;							// 求栈的长度
 	bool IsEmpty() const;							// 判断栈是否为空
 	void Clear();									// 将栈清空
 	void Traverse(void (*Visit)(const ElemType &)) const;	// 遍历栈
@@ -38,7 +38,7 @@ SeqStack<ElemType>::SeqStack(int size)
 	maxSize = size;						// 栈的最大容量
 	if (elems != NULL) delete []elems;	// 释放已有存储空间
 	elems = new ElemType[maxSize];		// 分配新的存储空间
-	top = -1;	
+	top = -1;
 }
 
 template<class ElemType>
@@ -71,9 +71,9 @@ void SeqStack<ElemType>::Clear()
 
 template <class ElemType>
 void SeqStack<ElemType>::Traverse(void (*Visit)(const ElemType &)) const
-// 操作结果：从栈顶到栈底依次对栈的每个元素调用函数(*visit)访问 
+// 操作结果：从栈顶到栈底依次对栈的每个元素调用函数(*visit)访问
 {
-	for (int i = top; i >=0 ; i--) 
+	for (int i = top; i >=0 ; i--)
 		(*Visit)(elems[i]);
 }
 
@@ -84,7 +84,7 @@ Status SeqStack<ElemType>::Push(const ElemType e)
 	if (top == maxSize - 1) // 栈已满
 		return OVER_FLOW;
 	else  {	// 操作成功
-		elems[++top] = e;	// 将元素e追加到栈顶 
+		elems[++top] = e;	// 将元素e追加到栈顶
 		return SUCCESS;
 	}
 }
@@ -115,13 +115,13 @@ Status SeqStack<ElemType>::Pop(ElemType &e)
 }
 
 template<class ElemType>
-SeqStack<ElemType>::SeqStack(const SeqStack<ElemType> &s) 
+SeqStack<ElemType>::SeqStack(const SeqStack<ElemType> &s)
 // 操作结果：由栈s构造新栈--复制构造函数
 {
-    maxSize = s.maxSize;			    // 栈的最大容量 
+    maxSize = s.maxSize;			    // 栈的最大容量
     if (elems != NULL) delete []elems;	// 释放已有存储空间
     elems = new ElemType[maxSize];		// 分配存储空间
-	top = s.top;					    // 复制栈顶指针 
+	top = s.top;					    // 复制栈顶指针
 	for (int i = 0; i <= top; i++)      // 从栈底到栈顶对栈s的每个元素进行复制
 		elems[i] = s.elems[i];
 }
@@ -131,10 +131,10 @@ SeqStack<ElemType> &SeqStack<ElemType>::operator = (const SeqStack<ElemType> &s)
 // 操作结果：将栈s赋值给当前栈--赋值语句重载
 {
 	if (&s != this)	{
-	    maxSize = s.maxSize;			    // 栈的最大容量 
+	    maxSize = s.maxSize;			    // 栈的最大容量
 	    if (elems != NULL) delete []elems;	// 释放已有存储空间
 	    elems = new ElemType[maxSize];		// 分配存储空间
-		top = s.top;					    // 复制栈顶指针 
+		top = s.top;					    // 复制栈顶指针
 		for (int i = 0; i <= top; i++)		// 从栈底到栈顶对栈s的每个元素进行复制
 			elems[i] = s.elems[i];
 	}

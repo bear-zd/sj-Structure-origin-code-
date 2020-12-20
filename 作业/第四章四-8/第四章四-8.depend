@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1608431132 source:c:\users\a8275\desktop\git仓库\sj-structure-origin-code-\作业\第四章四-8\testlinkstack.cpp
+	"LinkStack.h"
+
+1608431005 c:\users\a8275\desktop\git仓库\sj-structure-origin-code-\作业\第四章四-8\linkstack.h
+	"Assistance.h"
+	"node.h"
+
+1386423798 c:\users\a8275\desktop\git仓库\sj-structure-origin-code-\作业\第四章四-8\assistance.h
+	<cstring>
+	<iostream>
+	<limits>
+	<cmath>
+	<fstream>
+	<cctype>
+	<ctime>
+	<cstdlib>
+	<cstdio>
+	<iomanip>
+	<cstdarg>
+	<cassert>
+
+1203760222 c:\users\a8275\desktop\git仓库\sj-structure-origin-code-\作业\第四章四-8\node.h
+

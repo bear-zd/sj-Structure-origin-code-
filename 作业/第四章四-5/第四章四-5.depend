@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1608425652 source:c:\users\a8275\desktop\git仓库\sj-structure-origin-code-\作业\第四章四-5\testseqstack.cpp
+	"SeqStack.h"
+
+1608426320 c:\users\a8275\desktop\git仓库\sj-structure-origin-code-\作业\第四章四-5\seqstack.h
+	"Assistance.h"
+
+1386423798 c:\users\a8275\desktop\git仓库\sj-structure-origin-code-\作业\第四章四-5\assistance.h
+	<cstring>
+	<iostream>
+	<limits>
+	<cmath>
+	<fstream>
+	<cctype>
+	<ctime>
+	<cstdlib>
+	<cstdio>
+	<iomanip>
+	<cstdarg>
+	<cassert>
+
