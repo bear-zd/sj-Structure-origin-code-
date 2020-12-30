@@ -92,7 +92,7 @@ template <class ElemType>
 LinkList<ElemType>::LinkList()
 {
 	head = new Node<ElemType>;
-	head=NULL;                  //无头节点的构造
+	head->next=head;                  //无头节点的构造
 	length = 0;
 }
 
@@ -100,10 +100,10 @@ template <class ElemType>
 LinkList<ElemType>::LinkList(ElemType v[], int n)
 {
     Node<ElemType> *p;
-	p = head = new Node<ElemType>(v[0],NULL);	// 构造头结点
+	p = head = new Node<ElemType>(v[0],head);	// 构造头结点
 	for (int i = 1; i < n; i++)
     {
-	    p->next = new Node<ElemType>(v[i],NULL);
+	    p->next = new Node<ElemType>(v[i],head);
 	    p = p->next;
     }
 	length = n;						// 初始化单链表长度为n
@@ -131,7 +131,8 @@ bool LinkList<ElemType>::IsEmpty() const
 template <class ElemType>
 void LinkList<ElemType>::Clear()
 {
-	while (head != NULL)
+    int i=1;
+	while (i<=length)
 	{
         Node<ElemType> *p = head;
 		head=head->next;
@@ -144,10 +145,11 @@ template <class ElemType>
 void LinkList<ElemType>::Traverse(void (*Visit)(const ElemType &)) const
 // 操作结果：依次对单链表的每个元素调用函数(*visit)访问
 {
-    Node<ElemType> *p = head;//
-	while (p != NULL) {
+    Node<ElemType> *p = head;int i=1;
+	while (i <= length) {
 		(*Visit)(p->data);	// 对单链表中每个元素调用函数(*visit)访问
 		p = p->next;
+		i++;
 	}
 }
 
@@ -156,11 +158,11 @@ Status LinkList<ElemType>::LocateElem(const ElemType &e , int & position) const
 {
     Node<ElemType> *p = head;//
     position = 0;
-	while (p != NULL && p->data != e) {
+	while (position<length && p->data != e) {
 	    position++;
 		p = p->next ;
 	}
-	if(p==NULL)
+	if(position==length)
     {position = -1;return RANGE_ERROR;}
     return SUCCESS;
 
@@ -231,7 +233,7 @@ Status LinkList<ElemType>::InsertElem(int i, const ElemType &e)
     if(i==0)
     {
         Node<ElemType> *q;
-        q=new Node<ElemType>(e,head);
+        q=new Node<ElemType>(e,NULL);
         head=q;
         length++;
         return SUCCESS;
@@ -251,12 +253,13 @@ Status LinkList<ElemType>::InsertElem(int i, const ElemType &e)
 template <class ElemType>
 Status LinkList<ElemType>::InsertElem(const ElemType &e)
 {
-    if (head==NULL)
-        {head=new Node<ElemType>(e,NULL);length++;return SUCCESS;}
+    if (length==0)
+        {head=new Node<ElemType>(e,head);length++;return SUCCESS;}
     else{
 	Node<ElemType> *p, *q;
-	q = new Node<ElemType>(e, NULL);
-	for (p = head; p->next != NULL; p = p->next) ;
+	q = new Node<ElemType>(e, head);
+	int i=1;
+	for (p = head; i <  length; p = p->next,i++) ;
     p->next = q;
 	length++;
 	return SUCCESS;

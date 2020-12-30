@@ -19,3 +19,23 @@
 	<cstdarg>
 	<cassert>
 
+1608393478 source:c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第四章四-4\testseqstack.cpp
+	"SeqStack.h"
+
+1608652191 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第四章四-4\seqstack.h
+	"Assistance.h"
+
+1386423798 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第四章四-4\assistance.h
+	<cstring>
+	<iostream>
+	<limits>
+	<cmath>
+	<fstream>
+	<cctype>
+	<ctime>
+	<cstdlib>
+	<cstdio>
+	<iomanip>
+	<cstdarg>
+	<cassert>
+
