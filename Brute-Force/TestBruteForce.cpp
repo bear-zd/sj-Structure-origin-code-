@@ -1,3 +1,4 @@
+
 #include "Brute-Force.h"
 
 int main(void)
@@ -8,7 +9,7 @@ int main(void)
 	Write(ob);
 	cout << "子串为：" ;
 	Write(pat);
-	
+
 	cout << endl << "从主串开始位置（第0个字符）查找模式串：" ;
 	cout << BF_find(ob, pat) << endl;
 
@@ -18,7 +19,7 @@ int main(void)
 	pat="string";
 	cout << endl << "改模式串为string，从主串开始位置查找模式串：" ;
 	cout << BF_find(ob, pat) << endl;
-	
+
 	pat="this";
 	cout << endl << "改模式串为this，从主串开始位置查找模式串：" ;
 	cout << BF_find(ob, pat) << endl;

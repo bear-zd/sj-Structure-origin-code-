@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1609381597 source:c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第五章四-10()\testgenlist.cpp
+	"GenList.h"
+
+1609400063 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第五章四-10()\genlist.h
+	"Assistance.h"
+	"GenNode.h"
+
+1386423798 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第五章四-10()\assistance.h
+	<cstring>
+	<iostream>
+	<limits>
+	<cmath>
+	<fstream>
+	<cctype>
+	<ctime>
+	<cstdlib>
+	<cstdio>
+	<iomanip>
+	<cstdarg>
+	<cassert>
+
+1356872626 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第五章四-10()\gennode.h
+
