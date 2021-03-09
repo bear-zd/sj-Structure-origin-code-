@@ -22,11 +22,11 @@ protected:
 		// 中序遍历以r为根的二叉树
 	void PostOrder(BinTreeNode<ElemType>*r,
 void (*Visit)(const ElemType &)) const;	// 后序遍历以r为根的二叉树
-    int Height(const BinTreeNode<ElemType> *r) const;	
+    int Height(const BinTreeNode<ElemType> *r) const;
 // 求以r为根的二叉树的高
 	int NodeCount(const BinTreeNode<ElemType> *r) const;
 // 求以r为根的二叉树的结点个数
-	BinTreeNode<ElemType> *Parent(BinTreeNode<ElemType> *r, 
+	BinTreeNode<ElemType> *Parent(BinTreeNode<ElemType> *r,
 		const BinTreeNode<ElemType>*p) const;//在以r为根的二叉树中求p的双亲
 
 public:
@@ -40,7 +40,7 @@ public:
 		// 用e返回结点p元素值
 	Status SetElem(BinTreeNode<ElemType> *p, const ElemType &e);
 		// 将结点p的值置为e
-	void InOrder(void (*Visit)(const ElemType &)) const;// 二叉树的中序遍历	
+	void InOrder(void (*Visit)(const ElemType &)) const;// 二叉树的中序遍历
 	void PreOrder(void (*Visit)(const ElemType &)) const;// 二叉树的先序遍历
 	void PostOrder(void (*Visit)(const ElemType &)) const;// 二叉树的后序遍历
 	void LevelOrder(void (*Visit)(const ElemType &)) const;	// 二叉树的层次遍历
@@ -50,36 +50,56 @@ public:
 	BinTreeNode<ElemType> *RightChild(const BinTreeNode<ElemType> *p) const;
 		// 求结点p的右孩子
 	BinTreeNode<ElemType> *LeftSibling(const BinTreeNode<ElemType> *p) const;
-		// 求结点p的左兄弟 
+		// 求结点p的左兄弟
 	BinTreeNode<ElemType>*RightSibling(const BinTreeNode<ElemType>*p) const;
 		// 求结点p的右兄弟
 	BinTreeNode<ElemType> *Parent(const BinTreeNode<ElemType> *p) const;
 		// 求结点p的双亲
 	BinTreeNode<ElemType> *Find(const ElemType &e) const;
-		// 查找元素e，查找成功返回结点指针，否则返回NULL 
+		// 查找元素e，查找成功返回结点指针，否则返回NULL
 	void InsertLeftChild(BinTreeNode<ElemType> *p, const ElemType &e);
         // 插入一个结点e作为p的左孩子
 	void InsertRightChild(BinTreeNode<ElemType> *p, const ElemType &e);
         // 插入一个结点e作为p的右孩子
 	void DeleteLeftChild(BinTreeNode<ElemType> *p);	// 删除p的左子树
 	void DeleteRightChild(BinTreeNode<ElemType> *p);// 删除p的右子树
+	int MaxWidth(BinTreeNode<ElemType> *p,int level,int *& Barrel);
 	int	Height() const;							    // 求二叉树的高
 	BinaryTree(const BinaryTree<ElemType> &t);	// 复制构造函数
 	BinaryTree(BinTreeNode<ElemType> *r);			// 建立以r为根的二叉树
 	BinaryTree<ElemType> &operator=(const BinaryTree<ElemType>& t);
 		// 赋值运算符重载
 };
-
+template<class ElemType>
+int BinaryTree<ElemType>::MaxWidth(BinTreeNode<ElemType> *p,int level,int *& Barrel)
+{
+int CurrentLayer=level;
+if (p->leftChild!=NULL)
+    {Barrel[level+1]++;MaxWidth(p->leftChild,level+1,Barrel);}
+if(p->rightChild!=NULL)
+    {Barrel[level+1]++;MaxWidth(p->rightChild,level+1,Barrel);}
+if(CurrentLayer==0)
+{
+    if(p==NULL)
+        return 0;
+    int Max=1;
+    for(int i=0;i<Height();i++)
+        if(Barrel[i]>Max)
+            Max=Barrel[i];
+return Max;
+}
+return 0;
+}
 
 template <class ElemType>
 void DisplayBTWithTreeShape(BinTreeNode<ElemType> *r, int level);
 	//	按树状形式显示以r为根的二叉树，level为层次数，可设根结点的层次数为1
 template <class ElemType>
 void DisplayBTWithTreeShape(BinaryTree<ElemType> &bt);
-	//	树状形式显示二叉树 
+	//	树状形式显示二叉树
 template <class ElemType>
-void CreateBinaryTree(BinTreeNode<ElemType> *&r, ElemType pre[], ElemType in[], 
-	int preLeft, int preRight, int inLeft, int inRight);	
+void CreateBinaryTree(BinTreeNode<ElemType> *&r, ElemType pre[], ElemType in[],
+	int preLeft, int preRight, int inLeft, int inRight);
 	// 已知二叉树的先序序列pre[preLeft..preRight]和中序序列in[inLeft..inRight]构造以r为根的
 	// 二叉树
 template <class ElemType>
@@ -156,8 +176,8 @@ template <class ElemType>
 void BinaryTree<ElemType>::PreOrder(void (*Visit)(const ElemType &)) const
 // 操作结果：先序遍历二叉树
 {
-	PreOrder(root, Visit);	
-}	
+	PreOrder(root, Visit);
+}
 
 template <class ElemType>
 void BinaryTree<ElemType>::InOrder(BinTreeNode<ElemType> *r, void (*Visit)(const ElemType &)) const
@@ -174,8 +194,8 @@ template <class ElemType>
 void BinaryTree<ElemType>::InOrder(void (*Visit)(const ElemType &)) const
 // 操作结果：中序遍历二叉树
 {
-	InOrder(root, Visit);	
-}	
+	InOrder(root, Visit);
+}
 
 template <class ElemType>
 void BinaryTree<ElemType>::PostOrder(BinTreeNode<ElemType> *r, void (*Visit)(const ElemType &)) const
@@ -192,8 +212,8 @@ template <class ElemType>
 void BinaryTree<ElemType>::PostOrder(void (*Visit)(const ElemType &)) const
 // 操作结果：后序遍历二叉树
 {
-	PostOrder(root, Visit);	
-}	
+	PostOrder(root, Visit);
+}
 
 template <class ElemType>
 void BinaryTree<ElemType>::LevelOrder(void (*Visit)(const ElemType &)) const
@@ -201,10 +221,10 @@ void BinaryTree<ElemType>::LevelOrder(void (*Visit)(const ElemType &)) const
 {
 	LinkQueue<BinTreeNode<ElemType> *> q;	// 定义队列q
 	BinTreeNode<ElemType> *p;
-	
+
 	if (root != NULL) q.EnQueue(root);		// 如果根非空,则入队
 	while (!q.IsEmpty())	{	            // q非空,说明还有结点未访问
-		q.DelQueue(p);                      // 队头元素出队，并访问之 
+		q.DelQueue(p);                      // 队头元素出队，并访问之
 		(*Visit)(p->data);
 		if (p->leftChild != NULL)			// 队头元素左孩子非空
 			q.EnQueue(p->leftChild);		// 左孩子入队
@@ -276,14 +296,14 @@ BinTreeNode<ElemType> *BinaryTree<ElemType>::RightChild(const BinTreeNode<ElemTy
 
 template <class ElemType>
 BinTreeNode<ElemType> *BinaryTree<ElemType>::LeftSibling(const BinTreeNode<ElemType> *p) const
-// 操作结果：返回二叉树结点p的左兄弟 
+// 操作结果：返回二叉树结点p的左兄弟
 {
     BinTreeNode<ElemType> *r = Parent(root, p);
     if (r == NULL)
        return NULL;
     else if (r->rightChild == p)
 	   return r->leftChild;
-    else 
+    else
        return NULL;
 }
 
@@ -296,7 +316,7 @@ BinTreeNode<ElemType> *BinaryTree<ElemType>::RightSibling(const BinTreeNode<Elem
        return NULL;
     else if (r->leftChild == p)
 	   return r->rightChild;
-    else 
+    else
        return NULL;
 }
 
@@ -311,11 +331,11 @@ BinTreeNode<ElemType> * BinaryTree<ElemType>::Parent(BinTreeNode<ElemType> *r, c
        return r; // r为p的双亲
 	else	{	// 在子树上求双亲
 		BinTreeNode<ElemType> *tmp;
-		tmp = Parent(r->leftChild, p);	// 在左子树上求p的双亲	
+		tmp = Parent(r->leftChild, p);	// 在左子树上求p的双亲
 		if (tmp != NULL)
            return tmp;			        // 双亲在左子树上
-  
-		tmp = Parent(r->rightChild, p);	// 在右子树上求p的双亲	
+
+		tmp = Parent(r->rightChild, p);	// 在右子树上求p的双亲
 		if (tmp != NULL)
            return tmp;			        // 双亲在右子树上
 		else
@@ -390,10 +410,10 @@ BinTreeNode<ElemType> *BinaryTree<ElemType>::Find(const ElemType &e) const
 {
 	LinkQueue<BinTreeNode<ElemType> *> q;	// 定义队列q
 	BinTreeNode<ElemType> *p;
-	
+
 	if (root != NULL) q.EnQueue(root);		// 如果根非空,则入队
 	while (!q.IsEmpty())	{	            // q非空,说明还有结点未访问
-		q.DelQueue(p);                      // 队头元素出队，并访问之 
+		q.DelQueue(p);                      // 队头元素出队，并访问之
 		if (p->data == e)
 			return p;
 		if (p->leftChild != NULL)			// 队头元素左孩子非空
@@ -422,7 +442,7 @@ BinTreeNode<ElemType> *BinaryTree<ElemType>::CopyTree(BinTreeNode<ElemType> *t)
 // 操作结果：将以t为根的二叉树复制成新的二叉树,返回新二叉树的根
 {
 	if (t == NULL)	// 复制空二叉树
-		return NULL;					// 空二叉树根为空	
+		return NULL;					// 空二叉树根为空
 	else	{	// 复制非空二叉树
 		BinTreeNode<ElemType> *lChild = CopyTree(t->leftChild);	// 复制左子树
 		BinTreeNode<ElemType> *rChild = CopyTree(t->rightChild);	// 复制右子树
@@ -442,7 +462,7 @@ BinaryTree<ElemType>::BinaryTree(const BinaryTree<ElemType> &t)
 template <class ElemType>
 BinaryTree<ElemType>::BinaryTree(BinTreeNode<ElemType> *r)
 // 操作结果：建立以r为根的二叉树
-{	
+{
 	root = r;	// 复制二叉树
 }
 
@@ -463,7 +483,7 @@ void DisplayBTWithTreeShape(BinTreeNode<ElemType> *r, int level)
 {
 	if(r != NULL)	{	// 空树不显式，只显式非空树
 		DisplayBTWithTreeShape<ElemType>(r->rightChild, level + 1);//显示右子树
-		cout << endl;					//显示新行	
+		cout << endl;					//显示新行
 		for(int i = 0; i < level - 1; i++)
 			cout << "  ";				//确保在第level列显示结点
 		cout << r->data;				//显示结点
@@ -473,16 +493,16 @@ void DisplayBTWithTreeShape(BinTreeNode<ElemType> *r, int level)
 
 template <class ElemType>
 void DisplayBTWithTreeShape(BinaryTree<ElemType> &bt)
-// 操作结果：树状形式显示二叉树 
+// 操作结果：树状形式显示二叉树
 {
-	DisplayBTWithTreeShape<ElemType>(bt.GetRoot(), 1);	
+	DisplayBTWithTreeShape<ElemType>(bt.GetRoot(), 1);
 		// 树状显示以bt.GetRoot()为根的二叉树
 	cout << endl;
 }
 
 template <class ElemType>
-void CreateBinaryTree(BinTreeNode<ElemType> *&r, ElemType pre[], ElemType in[], 
-							int preLeft, int preRight, int inLeft, int inRight)	
+void CreateBinaryTree(BinTreeNode<ElemType> *&r, ElemType pre[], ElemType in[],
+							int preLeft, int preRight, int inLeft, int inRight)
 // 操作结果：已知二叉树的先序序列pre[preLeft..preRight]和中序序列in[inLeft..inRight]构造
 //	以r为根的二叉树
 {
@@ -495,10 +515,10 @@ void CreateBinaryTree(BinTreeNode<ElemType> *&r, ElemType pre[], ElemType in[],
 			mid++;
 		CreateBinaryTree(r->leftChild, pre, in, preLeft+1, preLeft + mid - inLeft, inLeft, mid - 1);
 			// 生成左子树
-		CreateBinaryTree(r->rightChild, pre, in, preLeft + mid - inLeft + 1, preRight, mid + 1, 
+		CreateBinaryTree(r->rightChild, pre, in, preLeft + mid - inLeft + 1, preRight, mid + 1,
 			inRight);								// 生成右子树
 	}
-} 
+}
 
 template <class ElemType>
 BinaryTree<ElemType> &CreateBinaryTree(ElemType pre[], ElemType in[], int n)
@@ -506,7 +526,7 @@ BinaryTree<ElemType> &CreateBinaryTree(ElemType pre[], ElemType in[], int n)
 {
 	BinTreeNode<ElemType> *r;						// 二叉树的根
 	CreateBinaryTree<ElemType>(r, pre, in, 0, n - 1, 0, n - 1);
-		// 由先序和中序序列构造以r为根的二叉树 
+		// 由先序和中序序列构造以r为根的二叉树
 	BinaryTree<ElemType> *bt = new BinaryTree<ElemType>(r);	// 生成二叉树
 	return *bt;
 }

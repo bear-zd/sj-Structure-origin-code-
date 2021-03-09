@@ -1,0 +1,124 @@
+# depslib dependency file v1.0
+1514140574 source:f:\cb\postthreadbinarytree\main.cpp
+	<iostream>
+
+1610898713 source:f:\cb\postthreadbinarytree\testpostthreadbinarytree.cpp
+	"PostThreadBinaryTree.h"
+
+1610798252 f:\cb\postthreadbinarytree\postthreadbinarytree.h
+	"LinkBinaryTree.h"
+	"PostThreadBinaryTreeNode.h"
+
+1610496665 f:\cb\postthreadbinarytree\linkbinarytree.h
+	"LinkBinaryTreeNode.h"
+	"Assistance.h"
+	"LinkQueue.h"
+	<iostream>
+	<stack>
+	<queue>
+
+1610496665 f:\cb\postthreadbinarytree\linkbinarytreenode.h
+	<stdlib.h>
+
+1610465221 f:\cb\postthreadbinarytree\assistance.h
+	<cstring>
+	<iostream>
+	<limits>
+	<cmath>
+	<fstream>
+	<cctype>
+	<ctime>
+	<cstdlib>
+	<cstdio>
+	<iomanip>
+	<cstdarg>
+	<cassert>
+
+1610496747 f:\cb\postthreadbinarytree\linkqueue.h
+	"Assistance.h"
+	"Node.h"
+
+1610496747 f:\cb\postthreadbinarytree\node.h
+
+1610796956 f:\cb\postthreadbinarytree\postthreadbinarytreenode.h
+
+1614577858 source:c:\users\a8275\documents\tencent files\827569457\filerecv\postthreadbinarytree\testpostthreadbinarytree.cpp
+	"PostThreadBinaryTree.h"
+
+1614578295 c:\users\a8275\documents\tencent files\827569457\filerecv\postthreadbinarytree\postthreadbinarytree.h
+	"LinkBinaryTree.h"
+	"PostThreadBinaryTreeNode.h"
+
+1614576616 c:\users\a8275\documents\tencent files\827569457\filerecv\postthreadbinarytree\linkbinarytree.h
+	"LinkBinaryTreeNode.h"
+	"Assistance.h"
+	"LinkQueue.h"
+	<iostream>
+	<stack>
+	<queue>
+
+1610496665 c:\users\a8275\documents\tencent files\827569457\filerecv\postthreadbinarytree\linkbinarytreenode.h
+	<stdlib.h>
+
+1610465221 c:\users\a8275\documents\tencent files\827569457\filerecv\postthreadbinarytree\assistance.h
+	<cstring>
+	<iostream>
+	<limits>
+	<cmath>
+	<fstream>
+	<cctype>
+	<ctime>
+	<cstdlib>
+	<cstdio>
+	<iomanip>
+	<cstdarg>
+	<cassert>
+
+1610496747 c:\users\a8275\documents\tencent files\827569457\filerecv\postthreadbinarytree\linkqueue.h
+	"Assistance.h"
+	"Node.h"
+
+1610496747 c:\users\a8275\documents\tencent files\827569457\filerecv\postthreadbinarytree\node.h
+
+1610796956 c:\users\a8275\documents\tencent files\827569457\filerecv\postthreadbinarytree\postthreadbinarytreenode.h
+
+1614577858 source:c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第六章四-13\testpostthreadbinarytree.cpp
+	"PostThreadBinaryTree.h"
+
+1614578295 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第六章四-13\postthreadbinarytree.h
+	"LinkBinaryTree.h"
+	"PostThreadBinaryTreeNode.h"
+
+1614576616 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第六章四-13\linkbinarytree.h
+	"LinkBinaryTreeNode.h"
+	"Assistance.h"
+	"LinkQueue.h"
+	<iostream>
+	<stack>
+	<queue>
+
+1610496665 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第六章四-13\linkbinarytreenode.h
+	<stdlib.h>
+
+1610465221 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第六章四-13\assistance.h
+	<cstring>
+	<iostream>
+	<limits>
+	<cmath>
+	<fstream>
+	<cctype>
+	<ctime>
+	<cstdlib>
+	<cstdio>
+	<iomanip>
+	<cstdarg>
+	<cassert>
+
+1610496747 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第六章四-13\linkqueue.h
+	"Assistance.h"
+	"Node.h"
+
+1610496747 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第六章四-13\node.h
+
+1610796956 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第六章四-13\postthreadbinarytreenode.h
+

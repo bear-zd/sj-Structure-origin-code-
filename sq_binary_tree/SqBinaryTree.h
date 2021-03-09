@@ -7,9 +7,10 @@
 template <class ElemType>
 class SqBinaryTree
 {
-protected:
+public:
+//protected:
 //  顺序二叉树的数据成员:
-	int maxSize;					       // 顺序二叉树的最大存储空间 
+	int maxSize;					       // 顺序二叉树的最大存储空间
 	int *tag;	                           // 结点使用标志
 	ElemType *elems;					   // 结点存储空间
 
@@ -20,28 +21,28 @@ protected:
 	void PreOrder(int r, void (*Visit)(const ElemType &)) const;// 先序遍历以r为根的二叉树
 	void InOrder(int r, void (*Visit)(const ElemType &)) const;	// 中序遍历以r为根的二叉树
 	void PostOrder(int r, void (*Visit)(const ElemType &)) const;// 后序遍历以r为根的二叉树
-    int Height(int r) const;							// 求以r为根的二叉树的高度 
+    int Height(int r) const;							// 求以r为根的二叉树的高度
 
 public:
 //  顺序二叉树的函数成员:
 	SqBinaryTree(int size = DEFAULT_SIZE);				// 构造函数
 	virtual ~SqBinaryTree();							// 析构函数
-	int GetRoot() const;					            // 求二叉树中根结点 
+	int GetRoot() const;					            // 求二叉树中根结点
 	bool IsNodeEmpty(int p) const;					    // 判断结点p是否为空
 	Status GetElem(int p, ElemType &e);				    // 返回结点p的元素值
 	Status SetElem(int p, const ElemType &e);			// 将结点p的值置为e
 	bool IsEmpty() const;								// 判断二叉树是否为空
-	void InOrder(void (*Visit)(const ElemType &)) const;// 中序遍历二叉树	
+	void InOrder(void (*Visit)(const ElemType &)) const;// 中序遍历二叉树
 	void PreOrder(void (*Visit)(const ElemType &)) const;// 先序遍历二叉树
 	void PostOrder(void (*Visit)(const ElemType &)) const;// 后序遍历二叉树
 	void LevelOrder(void (*Visit)(const ElemType &)) const;// 层次遍历二叉树
 	int NodeCount() const;								// 求二叉树的结点个数
 	int LeftChild(const int p) const;					// 求二叉树中结点p的左孩子
 	int RightChild(const int p) const;				    // 求二叉树中结点p的右孩子
-	int LeftSibling(const int p) const;					// 求二叉树中结点p的左兄弟 
+	int LeftSibling(const int p) const;					// 求二叉树中结点p的左兄弟
 	int RightSibling(const int p) const;				// 求二叉树中结点p的右兄弟
 	int Parent(const int p) const;					    // 求二叉树中结点p的双亲
-	int Find(const ElemType &e) const;						// 查找二叉树中元素e 
+	int Find(const ElemType &e) const;						// 查找二叉树中元素e
 	Status InsertLeftChild(int p, const ElemType &e);	// 插入元素作为结点p左孩子
 	Status InsertRightChild(int p, const ElemType &e);  // 插入元素作为结点p右孩子
 	Status DeleteLeftChild(int p);					    // 删除二叉树中结点p左子树
@@ -49,11 +50,48 @@ public:
 	int	Height() const;									// 求二叉树的高
 	SqBinaryTree(const ElemType &e, int size = DEFAULT_SIZE);   // 建立以e为根的二叉树
 	SqBinaryTree(const SqBinaryTree<ElemType> &t);		    // 复制构造函数
-	SqBinaryTree(ElemType es[], int ta[], int size = DEFAULT_SIZE);	
+	SqBinaryTree(ElemType es[], int ta[], int size = DEFAULT_SIZE);
 		// 由es[]、ta[]与size构造二叉树
-	SqBinaryTree<ElemType> &operator=(const SqBinaryTree<ElemType>& t);		
+	SqBinaryTree<ElemType> &operator=(const SqBinaryTree<ElemType>& t);
 		// 赋值运算符重载
+    void FindSameAncestor(const ElemType a,const ElemType b , ElemType & anc);
 };
+
+template <class ElemType>
+void SqBinaryTree<ElemType>::FindSameAncestor(const ElemType a,const ElemType b , ElemType & anc)
+{
+//得到顺序：
+	LinkQueue<int> q;					// 定义辅助队列
+	int t = 0;							// 从根结点开始进行层次遍历
+    ElemType Elems[maxSize];
+	if (!IsNodeEmpty(t))
+        q.EnQueue(t);		// 如果根非空,则入队
+	while (!q.IsEmpty())	{	// q非空,说明还有结点未访问
+		q.DelQueue(t);
+		Elems[t]=elems[t];
+		if (!IsNodeEmpty(LeftChild(t)))				// 左孩子非空
+			q.EnQueue(LeftChild(t));				// 左孩子入队
+		if (!IsNodeEmpty(RightChild(t)))			// 右孩子非空
+			q.EnQueue(RightChild(t));			// 右孩子入队
+	}
+// 找到下标
+int a_=-1,b_=-1;
+for(t=0;t<maxSize;t++)
+    {if(a==Elems[t])
+        a_=t+1;
+    if(b==Elems[t])
+        b_=t+1;}
+if(a_==-1||b_==-1)
+    cout<<"元素不在树内"<<endl;
+//检索
+while(a_/2!=b_/2)
+    {if(a_<b_)
+        b_/=2;
+    else
+        a_/=2;}
+anc=Elems[a_/2-1];
+return ;
+}
 
 
 template <class ElemType>
@@ -61,10 +99,10 @@ void DisplayBTWithTreeShape(int r, int level);
 	//	按树状形式显示以r为根的二叉树，level为层次数，设根结点的层次数为1
 template <class ElemType>
 void DisplayBTWithTreeShape(SqBinaryTree<ElemType> &bt);
-	//	树状形式显示二叉树 
+	//	树状形式显示二叉树
 template <class ElemType>
-void CreateBinaryTree(ElemType es[], int ta[], int r, ElemType pre[], ElemType in[], 
-	int preLeft, int preRight, int inLeft, int inRight);	
+void CreateBinaryTree(ElemType es[], int ta[], int r, ElemType pre[], ElemType in[],
+	int preLeft, int preRight, int inLeft, int inRight);
 	// 已知二叉树的先序序列pre[preLeft..preRight]和中序序列in[inLeft..inRight]构造以r为根的二叉树
 template <class ElemType>
 SqBinaryTree<ElemType> &CreateBinaryTree(ElemType pre[], ElemType in[], int n, int size = DEFAULT_SIZE);
@@ -118,7 +156,7 @@ template <class ElemType>
 SqBinaryTree<ElemType>::SqBinaryTree(int size)
 // 操作结果：构造一棵空二叉树
 {
-	maxSize = size;			             // 设置二叉树的最大容量 
+	maxSize = size;			             // 设置二叉树的最大容量
 	elems = new ElemType[maxSize];	     // 分配数据元素的存储空间
 	tag = new int[maxSize];	// 分配标记数组的存储空间
 	for (int i = 0; i <maxSize; i++)	 // 将所有结点标识为空
@@ -135,12 +173,12 @@ SqBinaryTree<ElemType>::~SqBinaryTree()
 
 template <class ElemType>
 int SqBinaryTree<ElemType>::GetRoot() const
-// 操作结果：返回二叉树的根结点 
+// 操作结果：返回二叉树的根结点
 {
 	if (tag[0] == 1)
       return  0;
-    else 
-      return  -1 ; 
+    else
+      return  -1 ;
 }
 
 template <class ElemType>
@@ -165,8 +203,8 @@ template <class ElemType>
 void SqBinaryTree<ElemType>::PreOrder(void (*Visit)(const ElemType &)) const
 // 操作结果：先序遍历二叉树
 {
-	PreOrder(0, Visit);	
-}	
+	PreOrder(0, Visit);
+}
 
 template <class ElemType>
 void SqBinaryTree<ElemType>::InOrder(int r, void (*Visit)(const ElemType &)) const
@@ -183,8 +221,8 @@ template <class ElemType>
 void SqBinaryTree<ElemType>::InOrder(void (*Visit)(const ElemType &)) const
 // 操作结果：中序遍历二叉树
 {
-	InOrder(0, Visit);	
-}	
+	InOrder(0, Visit);
+}
 
 template <class ElemType>
 void SqBinaryTree<ElemType>::PostOrder(int r, void (*Visit)(const ElemType &)) const
@@ -201,8 +239,8 @@ template <class ElemType>
 void SqBinaryTree<ElemType>::PostOrder(void (*Visit)(const ElemType &)) const
 // 操作结果：后序遍历二叉树
 {
-	PostOrder(0, Visit);	
-}	
+	PostOrder(0, Visit);
+}
 
 template <class ElemType>
 void SqBinaryTree<ElemType>::LevelOrder(void (*Visit)(const ElemType &)) const
@@ -210,11 +248,11 @@ void SqBinaryTree<ElemType>::LevelOrder(void (*Visit)(const ElemType &)) const
 {
 	LinkQueue<int> q;					// 定义辅助队列
 	int t = 0;							// 从根结点开始进行层次遍历
-	
+
 	if (!IsNodeEmpty(t))
         q.EnQueue(t);		// 如果根非空,则入队
 	while (!q.IsEmpty())	{	// q非空,说明还有结点未访问
-		q.DelQueue(t);     
+		q.DelQueue(t);
 		(*Visit)(elems[t]);
 		if (!IsNodeEmpty(LeftChild(t)))				// 左孩子非空
 			q.EnQueue(LeftChild(t));				// 左孩子入队
@@ -229,7 +267,7 @@ int SqBinaryTree<ElemType>::Height(int r) const
 {
 	if(IsNodeEmpty(r))		// 空二叉树的高为0
 		return 0;
-	else	{	
+	else	{
 		int lHeight, rHeight;
 		lHeight = Height(LeftChild(r));		// 求r的左子树的高
 		rHeight = Height(RightChild(r));	// 求r的右子树的高
@@ -269,8 +307,8 @@ int SqBinaryTree<ElemType>::LeftChild(const int p) const
 {
 	if (2 * p + 1 < maxSize && tag[2 * p + 1] == 1)
       return  2 * p + 1;
-    else 
-      return  -1 ; 
+    else
+      return  -1 ;
 }
 
 template <class ElemType>
@@ -279,18 +317,18 @@ int SqBinaryTree<ElemType>::RightChild(const int p) const
 {
 	if (2 * p + 2 < maxSize && tag[2 * p + 2] == 1)
       return  2 * p + 2;
-    else 
-      return  -1 ; 
+    else
+      return  -1 ;
 }
 
 template <class ElemType>
 int SqBinaryTree<ElemType>::LeftSibling(const int p) const
-// 操作结果：返回二叉树结点p的左兄弟 
+// 操作结果：返回二叉树结点p的左兄弟
 {
 	if (p % 2 == 1 || p == 0 || tag[p - 1] == 0)
         return -1;
-    else 
-        return p - 1; 
+    else
+        return p - 1;
 }
 
 template <class ElemType>
@@ -299,8 +337,8 @@ int SqBinaryTree<ElemType>::RightSibling(const int p) const
 {
 	if (p % 2 == 0 || p + 1 >= maxSize || tag[p + 1] == 0)
         return -1;
-    else 
-        return p + 1; 
+    else
+        return p + 1;
 }
 
 template <class ElemType>
@@ -312,15 +350,15 @@ int SqBinaryTree<ElemType>::Parent(const int p) const
 
 template <class ElemType>
 int SqBinaryTree<ElemType>::Find(const ElemType &e) const
-// 操作结果：查找二叉树中元素e，查找成功返回其在数组的下标，否则返回-1. 
+// 操作结果：查找二叉树中元素e，查找成功返回其在数组的下标，否则返回-1.
 {
 	LinkQueue<int> q;					// 定义辅助队列
-	int t = 0;							
-	
+	int t = 0;
+
 	if (!IsNodeEmpty(t))
         q.EnQueue(t);					// 如果根非空,则入队
 	while (!q.IsEmpty())	{			// q非空,说明还有结点未访问
-		q.DelQueue(t);     
+		q.DelQueue(t);
 		if (elems[t] == e)
 			return t;
 		if (!IsNodeEmpty(LeftChild(t)))				// 左孩子非空
@@ -338,7 +376,7 @@ Status SqBinaryTree<ElemType>::InsertLeftChild(int p, const ElemType &e)
 {
 	if (IsNodeEmpty(p))
 		return FAIL;
-	else 	{	// 插入左孩子    
+	else 	{	// 插入左孩子
 		if (2 * p + 1 < maxSize && 2 * p + 1 > 0 && tag[2 * p + 1] == 0)	{	// p左孩子为空,且位置合法
 			elems[2 * p + 1] = e;				// 设置左孩子元素值
 			tag[2 * p + 1] = 1;		            // 设置左孩子标志
@@ -368,25 +406,25 @@ Status SqBinaryTree<ElemType>::InsertRightChild(int p, const ElemType &e)
 
 template <class ElemType>
 Status SqBinaryTree<ElemType>::DeleteLeftChild(int p)
-// 操作结果：如果p非空，则删除p左子树；否则操作失败。 
+// 操作结果：如果p非空，则删除p左子树；否则操作失败。
 {
 	if (IsNodeEmpty(p))
 		return FAIL;
-	else  { 
+	else  {
 		Destroy(LeftChild(p));
-		return SUCCESS;			
+		return SUCCESS;
 	}
 }
 
 template <class ElemType>
 Status SqBinaryTree<ElemType>::DeleteRightChild(int p)
-// 操作结果：如果p非空，则删除p右子树；否则操作失败。 
+// 操作结果：如果p非空，则删除p右子树；否则操作失败。
 {
 	if (IsNodeEmpty(p))
 		return FAIL;
 	else	{
-		Destroy(RightChild(p));	
-		return SUCCESS;		
+		Destroy(RightChild(p));
+		return SUCCESS;
 	}
 }
 
@@ -423,20 +461,20 @@ SqBinaryTree<ElemType>::SqBinaryTree(const SqBinaryTree<ElemType> &t)
 	elems = new ElemType[maxSize];	// 分配数据元素的存储空间
 	tag = new int[maxSize];	        // 分配标记数组的存储空间
 	for (int i = 0; i <maxSize; i++)	{
-		elems[i] = t.elems[i];           // 复制结点元素 
+		elems[i] = t.elems[i];           // 复制结点元素
 		tag[i] = t.tag[i];             // 复制结点标记
     }
 }
 
 template <class ElemType>
 SqBinaryTree<ElemType>::SqBinaryTree(ElemType es[], int ta[], int size)
-// 操作结果：由元素数组es[]和标记数组ta[]构造最大空间为size的二叉树, 
+// 操作结果：由元素数组es[]和标记数组ta[]构造最大空间为size的二叉树,
 {
 	maxSize = size;					// 设置最大空间
 	elems = new ElemType[maxSize];	// 分配数据元素的存储空间
 	tag = new int[maxSize];	        // 分配标记数组的存储空间
 	for (int i = 0; i <maxSize; i++)	{
-		elems[i] = es[i];           // 复制结点元素 
+		elems[i] = es[i];           // 复制结点元素
 		tag[i] = ta[i];             // 复制结点标记
     }
 }
@@ -452,7 +490,7 @@ SqBinaryTree<ElemType> &SqBinaryTree<ElemType>::operator=(const SqBinaryTree<Ele
         tag = new int[maxSize];	        // 分配标记数组的存储空间
 
 		for (int i = 0; i <maxSize; i++){
-		    elems[i] = t.elems[i];           // 复制结点元素 
+		    elems[i] = t.elems[i];           // 复制结点元素
 		    tag[i] = t.tag[i];             // 复制结点标记
         }
 	}
@@ -465,7 +503,7 @@ void DisplayBTWithTreeShape(SqBinaryTree<ElemType> &bt, int r, int level)
 {
 	if(!bt.IsNodeEmpty(r))	{	        //空树不显式，只显式非空树
 		DisplayBTWithTreeShape<ElemType>(bt, bt.RightChild(r), level + 1);//显示右子树
-		cout << endl;					//显示新行	
+		cout << endl;					//显示新行
 		for(int i = 0; i < level - 1; i++)
 			cout << "  ";				//确保在第level列显示结点
 		ElemType e;
@@ -477,16 +515,16 @@ void DisplayBTWithTreeShape(SqBinaryTree<ElemType> &bt, int r, int level)
 
 template <class ElemType>
 void DisplayBTWithTreeShape(SqBinaryTree<ElemType> &bt)
-//	操作结果：树状形式显示二叉树 
+//	操作结果：树状形式显示二叉树
 {
-	DisplayBTWithTreeShape<ElemType>(bt, 0, 1);	
+	DisplayBTWithTreeShape<ElemType>(bt, 0, 1);
 		// 树状显示二叉树bt
 	cout << endl;
 }
 
 template <class ElemType>
-void CreateBinaryTree(ElemType es[], int ta[], int r, ElemType pre[], ElemType in[], 
-	int preLeft, int preRight, int inLeft, int inRight)	
+void CreateBinaryTree(ElemType es[], int ta[], int r, ElemType pre[], ElemType in[],
+	int preLeft, int preRight, int inLeft, int inRight)
 // 操作结果：已知二叉树的先序序列pre[preLeft..preRight]和中序序列in[inLeft..inRight]构造
 //	以r为根的二叉树
 {
@@ -497,10 +535,10 @@ void CreateBinaryTree(ElemType es[], int ta[], int r, ElemType pre[], ElemType i
 			mid++;
 		CreateBinaryTree(es, ta, 2 * r + 1, pre, in, preLeft+1, preLeft + mid - inLeft, inLeft, mid - 1);
                                         // 生成左子树
-		CreateBinaryTree(es, ta, 2 * r + 2, pre, in, preLeft + mid - inLeft + 1, preRight, mid + 1, 
+		CreateBinaryTree(es, ta, 2 * r + 2, pre, in, preLeft + mid - inLeft + 1, preRight, mid + 1,
 			inRight);					// 生成右子树
 	}
-} 
+}
 
 template <class ElemType>
 SqBinaryTree<ElemType> &CreateBinaryTree(ElemType pre[], ElemType in[], int n, int size)
@@ -512,10 +550,11 @@ SqBinaryTree<ElemType> &CreateBinaryTree(ElemType pre[], ElemType in[], int n, i
 	for (int i = 0; i < size; i++)
 	    ta[i] = 0;
 	CreateBinaryTree<ElemType>(es, ta, r, pre, in, 0, n - 1, 0, n - 1);
-		// 由先序和中序序列构造以r为根的二叉树 
+		// 由先序和中序序列构造以r为根的二叉树
 	SqBinaryTree<ElemType> *bt = new SqBinaryTree<ElemType>(es, ta, size);	// 生成二叉树
 	delete []es;
     delete []ta;						// 释放临时空间
+    cout<<es<<endl;
 	return *bt;
 }
 

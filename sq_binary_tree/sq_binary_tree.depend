@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1611919295 source:c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\sq_binary_tree\testsqbinarytree.cpp
+	"SqBinaryTree.h"
+
+1611919382 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\sq_binary_tree\sqbinarytree.h
+	"Assistance.h"
+	"LinkQueue.h"
+
+1386423798 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\sq_binary_tree\assistance.h
+	<cstring>
+	<iostream>
+	<limits>
+	<cmath>
+	<fstream>
+	<cctype>
+	<ctime>
+	<cstdlib>
+	<cstdio>
+	<iomanip>
+	<cstdarg>
+	<cassert>
+
+1377162048 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\sq_binary_tree\linkqueue.h
+	"Node.h"
+
+1203760222 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\sq_binary_tree\node.h
+

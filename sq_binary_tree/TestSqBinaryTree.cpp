@@ -10,7 +10,7 @@ int main(void)
 	int n = 9, size=15;										// 结点个数
 	SqBinaryTree<char> bt;
 	bt = CreateBinaryTree(pre, in, n, size);				// 构造二叉树
-		
+
 	cout << "由先序：A,B,D,E,G,H,C,F,I和中序：D,B,G,E,H,A,C,F,I构造的二叉树:" << endl;
 	DisplayBTWithTreeShape<char>(bt);
 	cout << endl;
@@ -27,6 +27,7 @@ int main(void)
         cout << endl << "7. 求二叉树的结点数.";
         cout << endl << "8. 求二叉树的高度.";
         cout << endl << "9. 显示二叉排序树.";
+        cout << endl << "a. 显示二叉排序树.";
 		cout << endl << "0. 退出";
 		cout << endl << "选择功能(0~7):";
 		cin >> c;
@@ -49,8 +50,8 @@ int main(void)
 			    p = bt.Find(e);
 			    if (p == -1)
 			    	cout << "该结点不存在！" << endl;
-			    else 
-					bt.DeleteRightChild(p);					
+			    else
+					bt.DeleteRightChild(p);
 			    break;
 		    case '3':
 				cout << endl;
@@ -80,9 +81,19 @@ int main(void)
 				cout << endl;
 				DisplayBTWithTreeShape(bt);
 				break;
+            case 'a':
+				cout << endl;
+				char a,b,anc;
+				cout<<"请输入第一个元素：";
+				cin>>a;
+				cout<<"请输入第二个元素：";
+				cin>>b;
+				bt.FindSameAncestor(a,b,anc);
+				cout<<anc<<endl;
+				break;
 		}
 	}
-	
+
 	system("PAUSE");
 	return 0;
 }

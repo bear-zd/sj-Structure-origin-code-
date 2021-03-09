@@ -3,15 +3,17 @@
 int main(void)
 {
 	BinTreeNode<char> *p;
-	char pre[]={'A','B','D','E','G','H','C','F','I'}; // 先序序列
-	char in[]={'D','B','G','E','H','A','C','F','I'};  // 中序序列
+	/*char pre[]={'A','B','D','E','G','H','C','F','I'}; // 先序序列
+	char in[]={'D','B','G','E','H','A','C','F','I'}; */ // 中序序列
+	char pre[]={'a','b','d','h','i','e','j','k','c','f','l'};
+	char in[]={'h','d','i','b','j','e','k','a','l','f','c'};
 	int n = 9;						                  // 结点个数
 	BinaryTree<char> bt;
     char c = 'x', e;
-	
-	
+
+
 	bt = CreateBinaryTree(pre, in, n);           // 构造二叉树
-		
+
 	cout << "由先序：A,B,D,E,G,H,C,F,I和中序：D,B,G,E,H,A,C,F,I构造的二叉树:" << endl;
 	DisplayBTWithTreeShape<char>(bt);
 	cout << endl;
@@ -28,6 +30,7 @@ int main(void)
         cout << endl << "7. 求二叉树的结点数.";
         cout << endl << "8. 求二叉树的高度.";
         cout << endl << "9. 显示二叉排序树.";
+        cout << endl << "a. 求最大宽度.";
 		cout << endl << "0. 退出";
 		cout << endl << "选择功能(0~7):";
 		cin >> c;
@@ -50,8 +53,8 @@ int main(void)
 			    p = bt.Find(e);
 			    if (p == NULL)
 			    	cout << "该结点不存在！" << endl;
-			    else 
-					bt.DeleteRightChild(p);					
+			    else
+					bt.DeleteRightChild(p);
 			    break;
 		    case '3':
 				cout << endl;
@@ -80,6 +83,11 @@ int main(void)
 	         case '9':
 				cout << endl;
 				DisplayBTWithTreeShape(bt);
+				break;
+            case 'a':
+				cout << endl;
+				int *Barrel=new int [bt.Height()];
+				cout<<bt.MaxWidth(bt.GetRoot(),0,Barrel)<<endl;
 				break;
 		}
 	}

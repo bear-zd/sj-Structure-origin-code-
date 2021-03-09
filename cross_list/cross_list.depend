@@ -1,0 +1,28 @@
+# depslib dependency file v1.0
+1415157064 source:c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\cross_list\testcrosslist.cpp
+	"CrossList.h"
+
+1415157026 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\cross_list\crosslist.h
+	"Assistance.h"
+	"crossnode.h"
+	"triple.h"
+
+1386423798 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\cross_list\assistance.h
+	<cstring>
+	<iostream>
+	<limits>
+	<cmath>
+	<fstream>
+	<cctype>
+	<ctime>
+	<cstdlib>
+	<cstdio>
+	<iomanip>
+	<cstdarg>
+	<cassert>
+
+1356534978 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\cross_list\crossnode.h
+	"triple.h"
+
+1318857960 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\cross_list\triple.h
+
