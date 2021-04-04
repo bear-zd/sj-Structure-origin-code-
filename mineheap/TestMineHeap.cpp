@@ -2,15 +2,15 @@
 
 int main()
 {
-	int a[12]={80,57,99,35,23,11,74,29,62,16};
-	MinHeap<int> ha(a,20,10);
+	int a[9]={34,46,19,12,17,25,38,25,20};
+	MinHeap<int> ha(a,20,9);
 	int e;
-	char c = 'x'; 
+	char c = 'x';
 	cout<<endl;
-	
+
 	cout << "最小堆序列为：" << endl;
 	ha.Traverse(Write<int>);
-	cout << endl << endl;	
+	cout << endl << endl;
 
     while (c != '0')	{
         cout << endl << "1. 插入元素.";
@@ -36,7 +36,7 @@ int main()
 		}
 	}
 
-	
+
 	system("pause");
 	return 0;
 }

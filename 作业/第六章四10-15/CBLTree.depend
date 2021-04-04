@@ -1,0 +1,45 @@
+# depslib dependency file v1.0
+1617013893 source:c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\child_bro_link_tree\testcbltree.cpp
+	"CBLTree.h"
+	"Assistance.h"
+
+1617152784 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\child_bro_link_tree\cbltree.h
+	<iostream>
+	<queue>
+
+1386423798 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\child_bro_link_tree\assistance.h
+	<cstring>
+	<iostream>
+	<limits>
+	<cmath>
+	<fstream>
+	<cctype>
+	<ctime>
+	<cstdlib>
+	<cstdio>
+	<iomanip>
+	<cstdarg>
+	<cassert>
+
+1617013893 source:c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第六章四10-15\testcbltree.cpp
+	"CBLTree.h"
+	"Assistance.h"
+
+1617152784 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第六章四10-15\cbltree.h
+	<iostream>
+	<queue>
+
+1386423798 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第六章四10-15\assistance.h
+	<cstring>
+	<iostream>
+	<limits>
+	<cmath>
+	<fstream>
+	<cctype>
+	<ctime>
+	<cstdlib>
+	<cstdio>
+	<iomanip>
+	<cstdarg>
+	<cassert>
+

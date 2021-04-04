@@ -4,15 +4,15 @@ int main(void)
 {
     try								// 用try封装可能出现异常的代码
 	{
-		const int n = 10;
-		char c[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'};
-		int a[] = {'a', 'g', 'i', 'c', 'a', 'h', 'f', 'f'};
-		int b[] = {'b', 'd', 'j', 'b', 'c', 'i', 'e', 'd'};
-		UFSets<char> e(c,n);
+		const int n = 17;
+		int c[] = {0,1,2,3,4,5,6,7, 8, 9, 10,11,12,13,14,15,16};
+		int a[] = {1, 3, 3, 1, 3, 8, 1, 3,3,3,3,14,16,14,1,1};
+		int b[] = {2, 4, 5, 7, 6, 9, 8, 10,11,12,13,15,0,16,3,14};
+		UFSets<int> e(c,n);
 		int i;
-		for (i = 0; i < 8; i++)
-			e.Union(a[i], b[i]);	// 合并等价类
-	
+		for (i = 0; i < 16; i++)
+			e.WeightedUnion(a[i], b[i]);	// 合并等价类
+
 		bool out[n];				// 已输出的结点值为true，否则值为false
 
 		for (i = 0; i < n; i++)
@@ -31,11 +31,14 @@ int main(void)
 			while (p < n && out[p]) p++;
 		}
 
+
+
 	}
 	catch (Error err)		// 捕捉并处理异常
 	{
 		err.Show();			// 显示异常信息
 	}
+
 
 	system("PAUSE");        // 调用库函数system()
 	return 0;               // 返回值0, 返回操作系统

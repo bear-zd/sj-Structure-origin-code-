@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1617028421 source:c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\ufsets\testufsets.cpp
+	"UFSets.h"
+
+1617028430 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\ufsets\ufsets.h
+	"Assistance.h"
+
+1386423798 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\ufsets\assistance.h
+	<cstring>
+	<iostream>
+	<limits>
+	<cmath>
+	<fstream>
+	<cctype>
+	<ctime>
+	<cstdlib>
+	<cstdio>
+	<iomanip>
+	<cstdarg>
+	<cassert>
+
