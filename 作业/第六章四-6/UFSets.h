@@ -66,6 +66,54 @@ int UFSets <ElemType> :: Height(ElemType e)
         }
     return Max;
 }
+
+template <class ElemType>
+void UFSets<ElemType>::Union1(ElemType a, ElemType b)
+// 操作结果：合并a与b所在的等价类
+{
+	int r1 = Find(a);					// 查找a所在等价类的根
+	int r2 = Find(b);					// 查找b所在等价类的根
+	if (r1 != r2 && r1 != -1) {
+       sets[r1].parent += sets[r2].parent;
+       sets[r2].parent = r1;	        // 合并等价类
+    }
+}
+
+template <class ElemType>
+void UFSets<ElemType>::Union2(ElemType a, ElemType b)
+// 操作结果：根据结点多少合并a与b所在的等价类
+{
+	int r1 = Find(a);					// 查找a所在等价类的根
+	int r2 = Find(b);					// 查找b所在等价类的根
+	if (r1 != r2 && r1 != -1) {
+       int  temp = sets[r1].parent + sets[r2].parent;
+       if (sets[r1].parent <= sets[r2].parent ) {
+           sets[r2].parent = r1;
+           sets[r1].parent = temp;
+       }
+       else {
+           sets[r1].parent = r2;       //r1中的结点个数少，r1指向r2
+           sets[r2].parent = temp;
+       }
+    }
+}
+
+template <class ElemType>
+void UFSets<ElemType>::Union3(ElemType a, ElemType b)
+// 操作结果：根据结点高度合并a与b所在的等价类
+{
+    int r1 = Find(a);
+    int r2 = Find(b);
+    if (r1 != r2 && r1 != -1 )
+    {
+        int  temp = sets[r1].parent + sets[r2].parent;
+        if (Height(b)>Height(a))
+            {sets[r1].parent= r2;sets[r2].parent = temp;}
+        else
+            {sets[r2].parent = r1;sets[r1].parent = temp;}
+    }
+}
+
 // 并查集的实现部分
 template <class ElemType>
 UFSets<ElemType>::UFSets(ElemType es[], int n)
@@ -145,52 +193,7 @@ int UFSets<ElemType>::GetOrder(ElemType e) const
 	return p;							    // 返元素下标
 }
 
-template <class ElemType>
-void UFSets<ElemType>::Union1(ElemType a, ElemType b)
-// 操作结果：合并a与b所在的等价类
-{
-	int r1 = Find(a);					// 查找a所在等价类的根
-	int r2 = Find(b);					// 查找b所在等价类的根
-	if (r1 != r2 && r1 != -1) {
-       sets[r1].parent += sets[r2].parent;
-       sets[r2].parent = r1;	        // 合并等价类
-    }
-}
 
-template <class ElemType>
-void UFSets<ElemType>::Union2(ElemType a, ElemType b)
-// 操作结果：根据结点多少合并a与b所在的等价类
-{
-	int r1 = Find(a);					// 查找a所在等价类的根
-	int r2 = Find(b);					// 查找b所在等价类的根
-	if (r1 != r2 && r1 != -1) {
-       int  temp = sets[r1].parent + sets[r2].parent;
-       if (sets[r1].parent <= sets[r2].parent ) {
-           sets[r2].parent = r1;
-           sets[r1].parent = temp;
-       }
-       else {
-           sets[r1].parent = r2;       //r1中的结点个数少，r1指向r2
-           sets[r2].parent = temp;
-       }
-    }
-}
-
-template <class ElemType>
-void UFSets<ElemType>::Union3(ElemType a, ElemType b)
-// 操作结果：根据结点高度合并a与b所在的等价类
-{
-    int r1 = Find(a);
-    int r2 = Find(b);
-    if (r1 != r2 && r1 != -1 )
-    {
-        int  temp = sets[r1].parent + sets[r2].parent;
-        if (Height(b)>Height(a))
-            {sets[r1].parent= r2;sets[r2].parent = temp;}
-        else
-            {sets[r2].parent = r1;sets[r1].parent = temp;}
-    }
-}
 
 template <class ElemType>
 bool UFSets<ElemType>::Differ(ElemType a, ElemType b)

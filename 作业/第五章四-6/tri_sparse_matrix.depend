@@ -1,12 +1,12 @@
 # depslib dependency file v1.0
-1609347000 source:c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第五章四-6\testtrisparsematrix.cpp
+1609347349 source:c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第五章四-6\testtrisparsematrix.cpp
 	"TriSparseMatrix.h"
 
 1609347094 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第五章四-6\trisparsematrix.h
 	"Assistance.h"
 	"triple.h"
 
-1609339997 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第五章四-6\assistance.h
+1609347349 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第五章四-6\assistance.h
 	<cstring>
 	<iostream>
 	<limits>

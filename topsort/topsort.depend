@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1618981448 source:c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\topsort\testtopsort.cpp
+	"TopSort.h"
+
+1618981870 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\topsort\topsort.h
+	"AdjListDirGraph.h"
+
+1618972890 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\topsort\adjlistdirgraph.h
+	"Assistance.h"
+	"AdjListDirGraphArc.h"
+	"AdjListDirGraphVex.h"
+
+1386423798 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\topsort\assistance.h
+	<cstring>
+	<iostream>
+	<limits>
+	<cmath>
+	<fstream>
+	<cctype>
+	<ctime>
+	<cstdlib>
+	<cstdio>
+	<iomanip>
+	<cstdarg>
+	<cassert>
+
+1618965459 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\topsort\adjlistdirgrapharc.h
+
+1618972808 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\topsort\adjlistdirgraphvex.h
+

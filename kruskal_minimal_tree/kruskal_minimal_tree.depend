@@ -1,0 +1,31 @@
+# depslib dependency file v1.0
+1619019511 source:c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\kruskal_minimal_tree\testkruskal.cpp
+	"Kruskal.h"
+
+1386493302 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\kruskal_minimal_tree\kruskal.h
+	"AdjMatrixUndirNetwork.h"
+	"UFSets.h"
+	"MineHeap.h"
+
+1415415950 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\kruskal_minimal_tree\adjmatrixundirnetwork.h
+	"Assistance.h"
+
+1386423798 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\kruskal_minimal_tree\assistance.h
+	<cstring>
+	<iostream>
+	<limits>
+	<cmath>
+	<fstream>
+	<cctype>
+	<ctime>
+	<cstdlib>
+	<cstdio>
+	<iomanip>
+	<cstdarg>
+	<cassert>
+
+1619019227 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\kruskal_minimal_tree\ufsets.h
+	"Assistance.h"
+
+1357213688 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\kruskal_minimal_tree\mineheap.h
+
