@@ -24,8 +24,6 @@ Status TopSort(const AdjListDirGraph<ElemType> &g)
 	int v, u, count = 0, top = -1;
 	ElemType e;
 	StatIndegree(g, indegree);				// 统计顶点的入度
-
-
 	for (v = 0; v < g.GetVexNum(); v++)
 		if (indegree[v] == 0)  {            // 入度为0的顶点入栈
 			indegree[v] = top;
@@ -64,7 +62,7 @@ Status EasySort(const AdjListDirGraph<ElemType> &g)
         {
             g.GetElem(v,e);
             indegree[v]--;
-            cout << e << " ";
+            cout <<e<<"  " ;
             for ( u = g.FirstAdjVex(v) ; u!= -1; u =g.NextAdjVex(v,u))
                 {indegree[u]--;}
             v=-1;

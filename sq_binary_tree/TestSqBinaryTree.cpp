@@ -27,7 +27,8 @@ int main(void)
         cout << endl << "7. 求二叉树的结点数.";
         cout << endl << "8. 求二叉树的高度.";
         cout << endl << "9. 显示二叉排序树.";
-        cout << endl << "a. 显示二叉排序树.";
+        cout << endl << "a. 寻找公共祖先.";
+        cout << endl << "b. 判断是否为二叉排序树."
 		cout << endl << "0. 退出";
 		cout << endl << "选择功能(0~7):";
 		cin >> c;
@@ -90,6 +91,10 @@ int main(void)
 				cin>>b;
 				bt.FindSameAncestor(a,b,anc);
 				cout<<anc<<endl;
+				break;
+            case 'b':
+				cout << endl;
+				cout << endl;
 				break;
 		}
 	}

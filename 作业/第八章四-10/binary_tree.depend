@@ -1,0 +1,59 @@
+# depslib dependency file v1.0
+1611925627 source:c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\binary_tree\testbinarytree.cpp
+	"BinaryTree.h"
+
+1611925289 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\binary_tree\binarytree.h
+	"LinkQueue.h"
+	"BinTreeNode.h"
+
+1415417704 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\binary_tree\linkqueue.h
+	"Assistance.h"
+	"Node.h"
+
+1386423798 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\binary_tree\assistance.h
+	<cstring>
+	<iostream>
+	<limits>
+	<cmath>
+	<fstream>
+	<cctype>
+	<ctime>
+	<cstdlib>
+	<cstdio>
+	<iomanip>
+	<cstdarg>
+	<cassert>
+
+1203760222 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\binary_tree\node.h
+
+1382876364 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\binary_tree\bintreenode.h
+
+1620738031 source:c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第八章四-10\testbinarytree.cpp
+	"BinaryTree.h"
+
+1620738392 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第八章四-10\binarytree.h
+	"LinkQueue.h"
+	"BinTreeNode.h"
+
+1415417704 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第八章四-10\linkqueue.h
+	"Assistance.h"
+	"Node.h"
+
+1386423798 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第八章四-10\assistance.h
+	<cstring>
+	<iostream>
+	<limits>
+	<cmath>
+	<fstream>
+	<cctype>
+	<ctime>
+	<cstdlib>
+	<cstdio>
+	<iomanip>
+	<cstdarg>
+	<cassert>
+
+1203760222 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第八章四-10\node.h
+
+1620737627 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第八章四-10\bintreenode.h
+

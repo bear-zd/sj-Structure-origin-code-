@@ -17,6 +17,7 @@ void StatIndegree(const AdjListDirNetwork<ElemType, WeightType> &g, int *indegre
 			indegree[u]++;              // u为弧<v,u>的弧头顶点
 }
 
+
 template <class ElemType, class WeightType>
 Status CriticalPath(const AdjListDirNetwork<ElemType, WeightType> &g)
 // 初始条件：存在有向网g
