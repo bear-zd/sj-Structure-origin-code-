@@ -97,9 +97,27 @@ int main(void)
 				break;}
              case 'b':
 				cout << endl;
-                if (bt.IsSorted(bt.GetRoot()))
+				LinkQueue<int> in;
+                bt.IsSorted(bt.GetRoot() , in);
+                int num;
+                if(!in.IsEmpty())
+                {
+                  in.DelQueue(num);
+                }
+                while(!in.IsEmpty())
+                {
+                    int temp;
+                    in.DelQueue(temp);
+                    if(temp>=num)
+                        num = temp;
+                    else
+                        break;
+                }
+                if (!in.IsEmpty())
+                    cout << "²»ÊÇ¶þ²æÅÅÐòÊ÷!" << endl;
+                else
                     cout << "ÊÇ¶þ²æÅÅÐòÊ÷!" << endl;
-				break;
+                break;
 
 
 		}

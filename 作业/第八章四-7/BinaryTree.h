@@ -69,11 +69,20 @@ public:
 	BinaryTree(BinTreeNode<ElemType> *r);			// 建立以r为根的二叉树
 	BinaryTree<ElemType> &operator=(const BinaryTree<ElemType>& t);
 		// 赋值运算符重载
-    bool  IsSorted(BinTreeNode<ElemType> *p);
+    void  IsSorted(BinTreeNode<ElemType> *p, LinkQueue <ElemType> &q); //正确的判断
+    bool  WrongIsSorted(BinTreeNode<ElemType> *p); //错误的判断
 };
-
 template <class ElemType>
-bool BinaryTree<ElemType> :: IsSorted(BinTreeNode<ElemType> *p)
+void BinaryTree<ElemType> :: IsSorted(BinTreeNode<ElemType> *p, LinkQueue <ElemType> &q )
+{
+    	if (p != NULL) 	{
+		IsSorted(p->leftChild , q);	// 首先遍历r的左子树
+		q.EnQueue(p->data);			// 再访问根结点r
+		IsSorted(p->rightChild, q);	// 最后遍历r的右子树
+}
+}
+template <class ElemType>
+bool BinaryTree<ElemType> :: WrongIsSorted(BinTreeNode<ElemType> *p )
 {
     if(p->leftChild && p->rightChild)
     {
@@ -93,7 +102,6 @@ bool BinaryTree<ElemType> :: IsSorted(BinTreeNode<ElemType> *p)
     if(!p->leftChild && !p->rightChild)
         return true;
     return false;
-
 }
 template<class ElemType>
 int BinaryTree<ElemType>::MaxWidth(BinTreeNode<ElemType> *p,int level,int *& Barrel)

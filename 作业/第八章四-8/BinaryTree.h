@@ -70,16 +70,28 @@ public:
 	BinaryTree<ElemType> &operator=(const BinaryTree<ElemType>& t);
 		// 赋值运算符重载
     bool  IsSorted(BinTreeNode<ElemType> *p);
-    void Larger(int x,BinTreeNode<ElemType> *q);
+    void LLarger(int x,BinTreeNode<ElemType> *q); //不符合题目要求的速率
+    void Larger (int x,BinTreeNode<ElemType> *q);
 };
 template <class ElemType>
 void BinaryTree<ElemType> :: Larger(int x,BinTreeNode<ElemType> *q)
+{
+    if (q != NULL) 	{
+        Larger(x, q->rightChild);	// 遍历r的右子树
+        if (q->data >= x)
+            cout << setw(4) <<q->data;
+         Larger(x , q->leftChild);	// 遍历r的左子树
+
+	}
+}
+template <class ElemType>
+void BinaryTree<ElemType> :: LLarger(int x,BinTreeNode<ElemType> *q)
 {
     if(q->leftChild)
         Larger(x,q->leftChild);
     if(q->rightChild)
         Larger(x,q->rightChild);
-    if(q->data > x)
+    if(q->data >= x)
         cout<<setw(4) << q->data ;
 }
 template <class ElemType>
@@ -101,6 +113,8 @@ bool BinaryTree<ElemType> :: IsSorted(BinTreeNode<ElemType> *p)
             return true;
     }
     if(!p->leftChild && !p->rightChild)
+        return true;
+    if(!p)
         return true;
     return false;
 
