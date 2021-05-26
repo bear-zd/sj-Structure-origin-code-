@@ -1,0 +1,28 @@
+# depslib dependency file v1.0
+1621946433 source:c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第九章四-9\main.cpp
+	<bits/stdc++.h>
+	"UnRQuickSort.h"
+
+1621946521 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第九章四-9\unrquicksort.h
+	"LinkStack.h"
+
+1415149024 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第九章四-9\linkstack.h
+	"Assistance.h"
+	"node.h"
+
+1386423798 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第九章四-9\assistance.h
+	<cstring>
+	<iostream>
+	<limits>
+	<cmath>
+	<fstream>
+	<cctype>
+	<ctime>
+	<cstdlib>
+	<cstdio>
+	<iomanip>
+	<cstdarg>
+	<cassert>
+
+1203760222 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第九章四-9\node.h
+

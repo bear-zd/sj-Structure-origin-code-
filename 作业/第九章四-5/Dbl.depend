@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1621925511 source:c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第九章四-5\testdbllinklist.cpp
+	"DblLinkList.h"
+
+1621925692 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第九章四-5\dbllinklist.h
+	"Assistance.h"
+	"DblNode.h"
+
+1386423798 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第九章四-5\assistance.h
+	<cstring>
+	<iostream>
+	<limits>
+	<cmath>
+	<fstream>
+	<cctype>
+	<ctime>
+	<cstdlib>
+	<cstdio>
+	<iomanip>
+	<cstdarg>
+	<cassert>
+
+1315369354 c:\users\a8275\desktop\gitbase\sj-structure-origin-code-\作业\第九章四-5\dblnode.h
+

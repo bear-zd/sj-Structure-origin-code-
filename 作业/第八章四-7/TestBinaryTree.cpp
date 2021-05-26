@@ -113,7 +113,7 @@ int main(void)
                     else
                         break;
                 }
-                if (!in.IsEmpty())
+                if (!in.IsSorted())
                     cout << "²»ÊÇ¶þ²æÅÅÐòÊ÷!" << endl;
                 else
                     cout << "ÊÇ¶þ²æÅÅÐòÊ÷!" << endl;
