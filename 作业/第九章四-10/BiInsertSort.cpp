@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+//1 3 6 8 9 10 0
 using namespace std;
 void BiInsertSort(int a[],int length)
 {

@@ -81,8 +81,7 @@ int main(void)
 			    cout << endl << "Ã°ÅÝÅÅÐò";
 			    la.BubbleSort();
                 cout << "½á¹û£º" << endl;
-                lb = la;
-			    lb.Traverse(Write<double>);
+			    la.Traverse(Write<double>);
 			    break;
           }
 	}

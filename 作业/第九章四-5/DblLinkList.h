@@ -37,9 +37,10 @@ void DblLinkList<ElemType>::BubbleSort()
 {
     DblNode<ElemType> *p,*o=NULL,*q;
     bool finish = false;
-    p = head ->next;
-    while(p!=o&&!finish)
+
+    while(!finish)
     {
+        p = head ->next;
         q=p->next;
         finish = true;
         while(q!=o)

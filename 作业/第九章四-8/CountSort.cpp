@@ -1,6 +1,12 @@
 #include <iostream>
 #include <bits/stdc++.h>
 using namespace std;
+void Swap(int &a,int &b)
+{
+    int temp=a;
+    a=b;
+    b=temp;
+}
 int* Countsort(int a[],int length)
 {
     int *b = new int[length];
@@ -13,13 +19,20 @@ int* Countsort(int a[],int length)
                 b[i]++;
             else
                 b[j]++;}
-    for(int i=0;i<length;i++)
+    /*for(int i=0;i<length;i++)
     {
     for(int j=0;j<length;j++)
     if(b[j]==i)
     c[i] = a[j];
     }
-    return c;
+    return c;*/
+    for(int i = 0;i<length;i++)
+    {
+        Swap(a[i],a[b[i]]);
+        Swap(b[i],b[b[i]]);
+    }
+    return a;
+
 }
 int main()
 {//int numlist[] = {1,2,3,4,5,6,7,8,9};
